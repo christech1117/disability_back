@@ -14,7 +14,7 @@ class CompanyBasicController extends Controller
         return CompanyBasic::all();
     }
 
-    public function show($id)
+    public function getCompanyBasic($id)
     {
         $companyBasic = CompanyBasic::where('company_basics.company_id', $id)
         ->leftjoin('users', 'users.id', 'company_basics.member_id')
@@ -23,14 +23,14 @@ class CompanyBasicController extends Controller
         return new CompanyBasicResource($companyBasic);
     }
 
-    public function store(Request $request)
+    public function createCompanyBasic(Request $request)
     {
         $companyBasic = CompanyBasic::create($request->all());
 
         return response()->json($companyBasic, 201);
     }
 
-    public function update(Request $request, $id)
+    public function updateCompanyBasic(Request $request, $id)
     {
         $companyBasic = CompanyBasic::findOrFail($id);
         $companyBasic->update($request->all());
@@ -38,11 +38,11 @@ class CompanyBasicController extends Controller
         return response()->json($companyBasic, 200);
     }
 
-    public function delete(Request $request, $id)
+    public function deleteCompanyBasic(Request $request, $id)
     {
         $companyBasic = CompanyBasic::findOrFail($id);
-        $companyBasic->delete();
+        $companyBasic->update(['is_del' => 1]);
 
-        return response()->json(null, 204);
+        return response()->json(null, 200);
     }
 }

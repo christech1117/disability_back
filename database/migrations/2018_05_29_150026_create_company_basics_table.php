@@ -23,6 +23,7 @@ class CreateCompanyBasicsTable extends Migration
             $table->string('service_people')->comment('服務對象類別');
             $table->string('budget')->comment('年度預算');
             $table->string('service_content')->comment('組織服務內容');
+            $table->string('is_del')->default(0)->comment('是否刪除');
             $table->timestamps();
         });
     }

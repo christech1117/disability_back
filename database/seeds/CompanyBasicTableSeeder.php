@@ -20,7 +20,7 @@ class CompanyBasicTableSeeder extends Seeder
         for ($i = 0; $i < 50; $i++) {
             CompanyBasic::create([
                 'company_name' => $faker->unique()->company,
-                'member_id' => $faker->name,
+                'member_id' => $i + 1,
                 'tel' => $faker->phoneNumber,
                 'email' => $faker->email,
                 'service_area' => $faker->city,

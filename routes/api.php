@@ -17,8 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('company_basics', 'CompanyBasicController@index');
-Route::get('company_basics/{id}', 'CompanyBasicController@show');
-Route::post('company_basics', 'CompanyBasicController@store');
-Route::put('company_basics/{id}', 'CompanyBasicController@update');
-Route::delete('company_basics/{id}', 'CompanyBasicController@delete');
+Route::get('test', function(){
+    return response([1,2,3,4], 200);
+});
+
+Route::get('company/basic', 'CompanyBasicController@index');
+Route::get('company/basic/{id}', 'CompanyBasicController@show');
+Route::post('company/basic', 'CompanyBasicController@store');
+Route::put('company/basic/{id}', 'CompanyBasicController@update');
+Route::delete('company/basic/{id}', 'CompanyBasicController@delete');
