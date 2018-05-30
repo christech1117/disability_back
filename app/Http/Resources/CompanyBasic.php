@@ -15,12 +15,15 @@ class CompanyBasic extends JsonResource
     public function toArray($request)
     {
         return [
-            'type' => 'company_basics',
             'company_id'   => (string)$this->company_id,
-            'attributes' => [
-                'company_name' => $this->company_name,
-                'tel' => $this->tel,
-            ],
+            'company_name' => $this->company_name,
+            'member_name' => $this->name,
+            'tel' => $this->tel,
+            'email' => $this->email,
+            'service_area' => '',
+            'service_people' => '',
+            'budget' => '',
+            'service_content' => '',
             'created_at' => (string)$this->created_at,
             'updated_at' => (string)$this->updated_at,
         ];

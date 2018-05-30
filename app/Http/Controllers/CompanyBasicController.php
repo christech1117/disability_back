@@ -16,8 +16,11 @@ class CompanyBasicController extends Controller
 
     public function show($id)
     {
-        // return CompanyBasic::find($id);
-        return new CompanyBasicResource(CompanyBasic::find($id));
+        $companyBasic = CompanyBasic::where('company_basics.company_id', $id)
+        ->leftjoin('users', 'users.id', 'company_basics.member_id')
+        ->first();
+
+        return new CompanyBasicResource($companyBasic);
     }
 
     public function store(Request $request)

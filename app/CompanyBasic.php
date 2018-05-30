@@ -10,12 +10,6 @@ class CompanyBasic extends Model
 
     protected $fillable = [
         'company_name',
-        'member_id',
-        'tel',
-        'email',
-        'service_area',
-        'service_people',
-        'budget',
-        'service_content'
+        'member_id'
     ];
 }
