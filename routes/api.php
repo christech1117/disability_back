@@ -13,16 +13,19 @@ use App\CompanyBasic;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::get('test', function(){
-    return response([1,2,3,4], 200);
-});
 
-Route::get('company/basic', 'CompanyBasicController@index');
-Route::get('company/basic/{id}', 'CompanyBasicController@show');
-Route::post('company/basic', 'CompanyBasicController@store');
-Route::put('company/basic/{id}', 'CompanyBasicController@update');
-Route::delete('company/basic/{id}', 'CompanyBasicController@delete');
+
+# 公司基本資料
+Route::group(['middleware' => 'cors'], function()
+{
+    Route::get('user/login', 'getCompanyBasic@index');
+    Route::get('company/basic', 'CompanyBasicController@index');
+    Route::get('company/basic/{id}', 'CompanyBasicController@getCompanyBasic');
+    Route::post('company/basic', 'CompanyBasicController@createCompanyBasic');
+    Route::put('company/basic/{id}', 'CompanyBasicController@updateCompanyBasic');
+    Route::put('company/basic/del/{id}', 'CompanyBasicController@deleteCompanyBasic');
+});

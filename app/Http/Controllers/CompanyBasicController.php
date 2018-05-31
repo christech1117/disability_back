@@ -4,21 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CompanyBasic;
-use App\Http\Resources\CompanyBasic as CompanyBasicResource;
+use App\Http\Resources\CompanyBasicResource;
 
 class CompanyBasicController extends Controller
 {
     public function index()
     {
         // return new CompanyBasicResource(CompanyBasic::all());
-        return CompanyBasic::all();
+        return CompanyBasic::
+        where('company_basics.is_del', '0')
+        ->get();
     }
 
     public function getCompanyBasic($id)
     {
-        $companyBasic = CompanyBasic::where('company_basics.company_id', $id)
+        $companyBasic = CompanyBasic::
+        where('company_basics.company_id', $id)
         ->leftjoin('users', 'users.id', 'company_basics.member_id')
-        ->first();
+        ->firstOrFail();
 
         return new CompanyBasicResource($companyBasic);
     }
@@ -35,6 +38,7 @@ class CompanyBasicController extends Controller
         $companyBasic = CompanyBasic::findOrFail($id);
         $companyBasic->update($request->all());
 
+        return $companyBasic;
         return response()->json($companyBasic, 200);
     }
 
@@ -43,6 +47,6 @@ class CompanyBasicController extends Controller
         $companyBasic = CompanyBasic::findOrFail($id);
         $companyBasic->update(['is_del' => 1]);
 
-        return response()->json(null, 200);
+        return response()->json($companyBasic, 200);
     }
 }
