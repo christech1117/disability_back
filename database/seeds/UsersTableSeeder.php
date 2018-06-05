@@ -19,18 +19,18 @@ class UsersTableSeeder extends Seeder
         // Let's make sure everyone has the same password and
         // let's hash it before the loop, or else our seeder
         // will be too slow.
-        $password = Hash::make('toptal');
+        $password = Hash::make('password');
 
         User::create([
-            'name' => 'Administrator',
+            'username' => 'admin',
             'email' => 'admin@test.com',
-            'password' => $password,
+            'password' => Hash::make('admin')
         ]);
 
         // And now let's generate a few dozen users for our app:
         for ($i = 0; $i < 10; $i++) {
             User::create([
-                'name' => $faker->name,
+                'username' => $faker->username,
                 'email' => $faker->email,
                 'password' => $password,
             ]);

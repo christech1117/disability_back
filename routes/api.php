@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\CompanyBasic;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,19 +12,26 @@ use App\CompanyBasic;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
 
-
-# 公司基本資料
 Route::group(['middleware' => 'cors'], function()
 {
-    Route::get('user/login', 'getCompanyBasic@index');
-    Route::get('company/basic', 'CompanyBasicController@index');
-    Route::get('company/basic/{id}', 'CompanyBasicController@getCompanyBasic');
-    Route::post('company/basic', 'CompanyBasicController@createCompanyBasic');
-    Route::put('company/basic/{id}', 'CompanyBasicController@updateCompanyBasic');
-    Route::put('company/basic/del/{id}', 'CompanyBasicController@deleteCompanyBasic');
+    # 公司基本資料
+    Route::group(['prefix'=>'company/basic'], function()
+    {
+        Route::get('/', 'CompanyBasicController@index');
+        Route::get('{id}', 'CompanyBasicController@getCompanyBasic');
+        Route::post('/', 'CompanyBasicController@createCompanyBasic');
+        Route::put('{id}', 'CompanyBasicController@updateCompanyBasic');
+        Route::put('del/{id}', 'CompanyBasicController@deleteCompanyBasic');
+    });
+
+    # 登入
+    Route::group(['prefix'=>'user'], function()
+    {
+        Route::post('register', 'AuthController@register');
+        Route::post('login', 'AuthController@login');
+        Route::get('info', 'AuthController@userinfo');
+        Route::post('logout', 'AuthController@logout');
+    });
 });
