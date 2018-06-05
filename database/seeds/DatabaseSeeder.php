@@ -11,7 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UsersTableSeeder::class);
-        $this->call(CompanyBasicTableSeeder::class);
+        $this->call(UsersTableSeeder::class); // 人員資料
+        $this->call(RoleTableSeeder::class); // 人員角色權限
+        $this->call(CompanyBasicTableSeeder::class); // 公司基本資料
     }
 }
