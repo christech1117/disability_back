@@ -31,7 +31,7 @@ Route::group(['middleware' => 'cors'], function()
     {
         Route::post('register', 'AuthController@register');
         Route::post('login', 'AuthController@login');
-        Route::get('info', 'AuthController@userinfo');
+        Route::get('info', 'AuthController@getUserinfo');
         Route::post('logout', 'AuthController@logout');
     });
 });

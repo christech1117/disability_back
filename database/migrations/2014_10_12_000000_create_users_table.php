@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('password')->comment('密碼');
             $table->string('avatar')->nullable()->comment('照片');
             $table->date('work_start_date')->nullable()->comment('就職日期');
-            $table->date('work_end_date')->nullable()->comment('離職日期');          
-            $table->string('tel')->nullable()->comment('電話');
+            $table->date('work_end_date')->nullable()->comment('離職日期');
+            $table->string('phone')->nullable()->comment('電話');
             $table->string('adress')->nullable()->comment('聯絡住址');
             $table->integer('depart_id')->nullable()->comment('部門或單位');
             $table->string('work_title')->nullable()->comment('職稱');

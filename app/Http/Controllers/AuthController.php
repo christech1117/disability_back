@@ -7,6 +7,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\UserResource;
 
 class AuthController extends Controller
 {
@@ -23,19 +24,19 @@ class AuthController extends Controller
     {
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password]))
         {
-            // return $user = Auth::user();
-            return $user = array('data' => Auth::user(), 'code' => 20000);
+            $userInfo = Auth::user();
+
+            return new UserResource($userInfo);
         } else {
             return 'false';
         }
     }
 
-    protected function userinfo()
+    protected function getUserinfo()
     {
-        // if (Auth::check())
-        // {
-            return $user = array('data' => array('name' => 'admin', 'roles' => 'admin'), 'code' => 20000);
-        // }
+        $userInfo = Auth::user();
+
+        return new UserResource($userInfo);
     }
 
     protected function logout(Request $request)

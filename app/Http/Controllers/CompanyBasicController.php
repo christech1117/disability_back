@@ -20,7 +20,7 @@ class CompanyBasicController extends Controller
     {
         $companyBasic = CompanyBasic::
         where('company_basics.company_id', $id)
-        ->leftjoin('users', 'users.id', 'company_basics.member_id')
+        ->leftjoin('users', 'users.id', 'company_basics.user_id')
         ->firstOrFail();
 
         return new CompanyBasicResource($companyBasic);
