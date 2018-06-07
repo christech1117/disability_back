@@ -15,16 +15,12 @@ class UserResource extends JsonResource
     public function toArray($request)
     {
         $data = array(
+            'id' => $this->id,
             'avatar' => "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
-            'code' => '',
-            'introduction' => '我是超级管理员',
+            'description' => $this->description,
             'name' => $this->username,
-            'role' => array('admin'),
-            'status' => '',
-            'token' => '',
-            'user' => '',
-            'created_at' => (string)$this->created_at,
-            'updated_at' => (string)$this->updated_at,
+            'roles' => [$this->title],
+            'token' => 'admin',
         );
 
         return array('data' => $data, 'code' => 20000);

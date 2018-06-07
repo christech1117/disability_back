@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Input;
 
 class AuthController extends Controller
 {
@@ -34,7 +35,10 @@ class AuthController extends Controller
 
     protected function getUserinfo()
     {
-        $userInfo = Auth::user();
+        $userInfo = User::
+        where('users.remember_token', Input::get('token'))
+        ->leftjoin('roles', 'users.role_id', 'roles.id')
+        ->firstOrFail();
 
         return new UserResource($userInfo);
     }
