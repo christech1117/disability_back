@@ -2,26 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\User;
 use App\CompanyBasic;
+use Illuminate\Http\Request;
 use App\Http\Resources\CompanyBasicResource;
 
 class CompanyBasicController extends Controller
 {
     public function index()
     {
-        // return new CompanyBasicResource(CompanyBasic::all());
-        return CompanyBasic::
-        where('company_basics.is_del', '0')
-        ->get();
+        return CompanyBasic::where('company_basics.is_del', '0')->get();
     }
 
     public function getCompanyBasic($id)
     {
-        $companyBasic = CompanyBasic::
-        where('company_basics.company_id', $id)
+        $service_count = User::count(); // 服務人數
+        $user_count = User::count(); // 全職人員數量
+
+        $companyBasic = CompanyBasic::select('company_basics.*', 'users.username')
+        ->where('company_basics.company_id', $id)
         ->leftjoin('users', 'users.id', 'company_basics.user_id')
         ->firstOrFail();
+
+        $companyBasic->setAttribute('service_count', $service_count);
+        $companyBasic->setAttribute('user_count', $user_count);
 
         return new CompanyBasicResource($companyBasic);
     }

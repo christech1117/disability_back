@@ -14,19 +14,25 @@ class CompanyBasicResource extends JsonResource
      */
     public function toArray($request)
     {
-        $data = array(
-            'company_id'   => (string)$this->company_id,
+        $data = [
+            'company_id' => (string)$this->company_id,
             'company_name' => $this->company_name,
             'username' => $this->username,
             'tel' => $this->tel,
             'email' => $this->email,
             'service_area' => $this->service_area,
-            'service_people' => '',
+            'service_count' => $this->service_count,
+            'user_count' => $this->user_count,
+            'service_people' => $this->service_people,
             'budget' => $this->budget,
-            'service_content' => '',
+            'live' => $this->live,
+            'daytime' => $this->daytime,
+            'job' => $this->job,
+            'education' => $this->education,
+            'other' => $this->other,
             'created_at' => (string)$this->created_at,
             'updated_at' => (string)$this->updated_at,
-        );
+        ];
 
         return array('data' => $data, 'code' => 20000);
     }

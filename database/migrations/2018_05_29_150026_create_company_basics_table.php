@@ -20,10 +20,14 @@ class CreateCompanyBasicsTable extends Migration
             $table->string('tel')->unique()->comment('電話');
             $table->string('email')->unique()->comment('Email');
             $table->enum('service_area', ['city', 'suburb', 'complex'])->comment('服務地區類別');
-            $table->string('service_people')->comment('服務對象類別');
+            $table->enum('service_people', ['obstacles', 'old', 'spirit', 'Special'])->comment('服務對象類別');
             $table->string('budget')->comment('年度預算');
-            $table->string('service_content')->comment('組織服務內容');
-            $table->enum('is_del', ['0','1'])->default(0)->comment('是否刪除');
+            $table->enum('live', ['large', 'small', 'night', 'community'])->comment('組織服務內容，居住');
+            $table->enum('daytime', ['daytime'])->nullable()->comment('組織服務內容，日間活動');
+            $table->enum('job', ['Sheltered', 'Supportive'])->comment('組織服務內容，就業');
+            $table->enum('education', ['education'])->nullable()->comment('組織服務內容，教育');
+            $table->string('other')->nullable()->comment('組織服務內容，其他');
+            $table->boolean('is_del')->default(false)->comment('是否刪除');
             $table->timestamps();
         });
     }

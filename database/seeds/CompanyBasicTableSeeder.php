@@ -16,7 +16,9 @@ class CompanyBasicTableSeeder extends Seeder
         CompanyBasic::truncate();
 
         $faker = \Faker\Factory::create('zh_TW');
-        $service_area = array("city", "suburb", "complex");
+        $service_area = ['city', 'suburb', 'complex'];
+        $service_people = ['obstacles', 'old', 'spirit', 'Special'];
+
         // And now, let's create a few articles in our database:
         for ($i = 0; $i < 50; $i++) {
             CompanyBasic::create([
@@ -25,9 +27,8 @@ class CompanyBasicTableSeeder extends Seeder
                 'tel' => $faker->phoneNumber,
                 'email' => $faker->email,
                 'service_area' => $service_area[array_rand($service_area)],
-                'service_people' => $faker->mimeType,
-                'budget' => $faker->randomNumber,
-                'service_content' => $faker->sentence
+                'service_people' => $service_people[array_rand($service_people)],
+                'budget' => $faker->randomNumber
             ]);
         }
     }
