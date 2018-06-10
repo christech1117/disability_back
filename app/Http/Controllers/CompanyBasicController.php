@@ -42,8 +42,7 @@ class CompanyBasicController extends Controller
         $companyBasic = CompanyBasic::findOrFail($id);
         $companyBasic->update($request->all());
 
-        return $companyBasic;
-        return response()->json($companyBasic, 200);
+        return new CompanyBasicResource($companyBasic);
     }
 
     public function deleteCompanyBasic(Request $request, $id)

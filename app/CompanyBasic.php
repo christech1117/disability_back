@@ -16,7 +16,11 @@ class CompanyBasic extends Model
         'service_area',
         'service_people',
         'budget',
-        'service_content',
+        'live',
+        'daytime',
+        'job',
+        'education',
+        'other',
         'is_del'
     ];
 }
