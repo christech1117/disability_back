@@ -16,7 +16,16 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'cors'], function()
 {
-    # 公司基本資料
+    # 登入
+    Route::group(['prefix'=>'user'], function()
+    {
+        Route::post('register', 'AuthController@register');
+        Route::post('login', 'AuthController@login');
+        Route::get('info', 'AuthController@getUserinfo');
+        Route::post('logout', 'AuthController@logout');
+    });
+
+    # 組織基本資料
     Route::group(['prefix'=>'company/basic'], function()
     {
         Route::get('/', 'CompanyBasicController@index');
@@ -26,12 +35,12 @@ Route::group(['middleware' => 'cors'], function()
         Route::put('del/{id}', 'CompanyBasicController@deleteCompanyBasic');
     });
 
-    # 登入
-    Route::group(['prefix'=>'user'], function()
+    # 方案管理
+    Route::group(['prefix'=>'company/plan'], function()
     {
-        Route::post('register', 'AuthController@register');
-        Route::post('login', 'AuthController@login');
-        Route::get('info', 'AuthController@getUserinfo');
-        Route::post('logout', 'AuthController@logout');
+        Route::get('/', 'CompanyPlanController@getCompanyPlanList');
+        Route::post('/', 'CompanyPlanController@createCompanyPlan');
+        Route::put('{id}', 'CompanyPlanController@updateCompanyPlan');
+        Route::delete('{id}', 'CompanyPlanController@deleteCompanyPlan');
     });
 });

@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UsersTableSeeder::class); // 人員資料
         $this->call(RoleTableSeeder::class); // 人員角色權限
-        $this->call(CompanyBasicTableSeeder::class); // 公司基本資料
+        $this->call(CompanyBasicTableSeeder::class); // 組織基本資料
+        $this->call(CompanyPlanTableSeeder::class); // 方案管理
     }
 }
