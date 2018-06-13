@@ -14,15 +14,20 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-        $data = [
-            'id' => $this->id,
-            'avatar' => "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
-            'description' => $this->description,
-            'username' => $this->username,
-            'roles' => [$this->title],
-            'token' => 'admin',
-        ];
+        $datas = parent::toArray($request);
 
-        return array('data' => $data, 'code' => 20000);
+        foreach ($datas as $data) {
+            $data = [
+                'user_id' => $data['id'],
+                'avatar' => "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
+                'value' => $data['username'],
+                'email' => $data['email'],
+                'phone' => $data['phone'],
+            ];
+            $new_datas[] = $data;
+        }
+        
+
+        return array('data' => $new_datas, 'code' => 20000);
     }
 }

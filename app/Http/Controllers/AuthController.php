@@ -7,7 +7,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\AuthResource;
 use Illuminate\Support\Facades\Input;
 
 class AuthController extends Controller
@@ -27,7 +27,7 @@ class AuthController extends Controller
         {
             $userInfo = Auth::user();
 
-            return new UserResource($userInfo);
+            return new AuthResource($userInfo);
         } else {
             return 'false';
         }
@@ -40,7 +40,7 @@ class AuthController extends Controller
         ->leftjoin('roles', 'users.role_id', 'roles.id')
         ->firstOrFail();
 
-        return new UserResource($userInfo);
+        return new AuthResource($userInfo);
     }
 
     protected function logout(Request $request)

@@ -43,4 +43,13 @@ Route::group(['middleware' => 'cors'], function()
         Route::put('{id}', 'CompanyPlanController@updateCompanyPlan');
         Route::delete('{id}', 'CompanyPlanController@deleteCompanyPlan');
     });
+
+    # 人員管理
+    Route::group(['prefix'=>'company/user'], function()
+    {
+        Route::get('/', 'UserController@getUserList');
+        Route::post('/', 'UserController@createUser');
+        Route::put('{id}', 'UserController@updateUser');
+        Route::delete('{id}', 'UserController@deleteUser');
+    });
 });
