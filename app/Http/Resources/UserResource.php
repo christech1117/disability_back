@@ -18,7 +18,7 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'avatar' => "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
             'description' => $this->description,
-            'name' => $this->username,
+            'username' => $this->username,
             'roles' => [$this->title],
             'token' => 'admin',
         ];

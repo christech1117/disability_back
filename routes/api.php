@@ -38,7 +38,7 @@ Route::group(['middleware' => 'cors'], function()
     # 方案管理
     Route::group(['prefix'=>'company/plan'], function()
     {
-        Route::get('/', 'CompanyPlanController@getCompanyPlanList');
+        Route::get('/{id}', 'CompanyPlanController@getCompanyPlanList');
         Route::post('/', 'CompanyPlanController@createCompanyPlan');
         Route::put('{id}', 'CompanyPlanController@updateCompanyPlan');
         Route::delete('{id}', 'CompanyPlanController@deleteCompanyPlan');

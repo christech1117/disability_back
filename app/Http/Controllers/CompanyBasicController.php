@@ -20,8 +20,8 @@ class CompanyBasicController extends Controller
         $user_count = User::count(); // 全職人員數量
 
         $companyBasic = CompanyBasic::select('company_basics.*', 'users.username')
-        ->where('company_basics.company_id', $id)
         ->leftjoin('users', 'users.id', 'company_basics.user_id')
+        ->where('company_basics.company_id', $id)
         ->firstOrFail();
 
         $companyBasic->setAttribute('service_count', $service_count);
