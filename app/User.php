@@ -19,7 +19,20 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
-        'active'
+        'avatar',
+        'work_start_date',
+        'phone',
+        'address',
+        'depart_id',
+        'work_title',
+        'plan_id',
+        'team_id',
+        'role_id',
+        'approve_status',
+        'income',
+        'active',
+        'is_del',
+        'company_id'
     ];
 
     /**

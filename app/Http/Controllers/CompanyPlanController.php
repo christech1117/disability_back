@@ -25,7 +25,7 @@ class CompanyPlanController extends Controller
     {
         $plan = CompanyPlan::create($request->all());
 
-        return response()->json($plan, 201);
+        return ['data' => $plan, 'code' => 20000];
     }
 
     public function updateCompanyPlan(Request $request, $id)
@@ -33,7 +33,7 @@ class CompanyPlanController extends Controller
         $plan = CompanyPlan::findOrFail($id);
         $plan->update($request->all());
 
-        return new CompanyPlanResource($plan);
+    return new CompanyPlanResource($plan);
     }
 
     public function deleteCompanyPlan(Request $request, $id)

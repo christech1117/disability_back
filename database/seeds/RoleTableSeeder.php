@@ -14,7 +14,7 @@ class RoleTableSeeder extends Seeder
     {
         $items = array(
             array('title' => 'super_admin', 'description' => '系統管理員'),
-            array('title' => 'company_admin', 'description' => '組織管理員'),
+            array('title' => 'admin', 'description' => '組織管理員'),
             array('title' => 'company_leader', 'description' => '組織主管'),
             array('title' => 'department_leader', 'description' => '部門主管'),
             array('title' => 'group_leader', 'description' => '組\科\室主管'),

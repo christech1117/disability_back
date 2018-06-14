@@ -18,5 +18,6 @@ class CompanyPlan extends Model
         'service_end_date',
         'price',
         'description',
+        'company_id',
     ];
 }

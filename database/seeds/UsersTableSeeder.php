@@ -34,17 +34,20 @@ class UsersTableSeeder extends Seeder
             'work_title' => $faker->jobTitle,
             'plan_id' => rand(1, 10),
             'team_id' => rand(1, 10),
-            'role_id' => 1,
+            'role_id' => 2,
+            'approve_status' => 'sis',
+            'income' => 'edit',
             'active' => rand(true, false),
-            'remember_token' => 'admin',
+            'remember_token' => 'admin'
         ]);
 
-        // And now let's generate a few dozen users for our app:
+        $income = ['no', 'look', 'edit'];
+
         for ($i = 0; $i < 50; $i++) {
             User::create([
-                'company_id' => rand(1, 10),
+                'company_id' => '1',
                 'username' => $faker->unique()->name,
-                'email' => $faker->email,
+                'email' => $faker->unique()->email,
                 'password' => $password,
                 'avatar' => 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
                 'work_start_date' => $faker->date,
@@ -55,6 +58,8 @@ class UsersTableSeeder extends Seeder
                 'plan_id' => rand(1, 10),
                 'team_id' => rand(1, 10),
                 'role_id' => $i + 1,
+                'approve_status' => 'sis',
+                'income' => $income[array_rand($income)],
                 'active' => rand(true, false),
                 'remember_token' => 'admin',
             ]);
