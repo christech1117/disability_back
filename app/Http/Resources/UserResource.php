@@ -24,7 +24,7 @@ class UserResource extends JsonResource
                 'work_start_date' => $data['work_start_date'],
                 'phone' => $data['phone'],
                 'email' => $data['email'],
-                'adress' => $data['adress'],
+                'address' => $data['address'],
                 'depart_id' => $data['depart_id'],
                 // 'depart_name' => $data['depart_name'],
                 'work_title' => $data['work_title'],
@@ -32,6 +32,7 @@ class UserResource extends JsonResource
                 'plan_name' => $data['plan_name'],
                 'team_id' => $data['team_id'],
                 // 'tema_name' => $data['tema_name']
+                'active' => $data['active']
             ];
             $new_datas[] = $data;
         }

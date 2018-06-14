@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable()->comment('照片');
             $table->date('work_start_date')->nullable()->comment('就職日期');
             $table->string('phone')->nullable()->comment('電話');
-            $table->string('adress')->nullable()->comment('聯絡住址');
+            $table->string('address')->nullable()->comment('聯絡住址');
             $table->integer('depart_id')->nullable()->comment('部門或單位');
             $table->string('work_title')->nullable()->comment('職稱');
             $table->integer('plan_id')->nullable()->comment('方案計畫名稱');
@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->integer('role_id')->nullable()->comment('角色');
             $table->string('approve_status')->nullable()->comment('審核');
             $table->enum('income', ['no', 'look', 'edit'])->nullable()->comment('個人收入');
-            $table->enum('active', ['1', '0'])->default('1')->comment('工作狀態：就業or離職');
+            $table->boolean('active')->default(true)->comment('工作狀態：就業or離職');
             $table->boolean('is_del')->default(false)->comment('是否刪除');
             $table->rememberToken();
             $table->timestamps();

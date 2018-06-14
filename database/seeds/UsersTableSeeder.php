@@ -25,10 +25,18 @@ class UsersTableSeeder extends Seeder
             'company_id' => '1',
             'username' => 'admin',
             'email' => 'admin@test.com',
-            'phone' => $faker->phoneNumber,
             'password' => Hash::make('admin'),
-            'remember_token' => 'admin',
+            'avatar' => 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+            'work_start_date' => $faker->date,
+            'phone' => $faker->phoneNumber,
+            'address' => $faker->address,
+            'depart_id' => rand(1, 10),
+            'work_title' => $faker->jobTitle,
+            'plan_id' => rand(1, 10),
+            'team_id' => rand(1, 10),
             'role_id' => 1,
+            'active' => rand(true, false),
+            'remember_token' => 'admin',
         ]);
 
         // And now let's generate a few dozen users for our app:
@@ -37,10 +45,18 @@ class UsersTableSeeder extends Seeder
                 'company_id' => rand(1, 10),
                 'username' => $faker->unique()->name,
                 'email' => $faker->email,
-                'phone' => $faker->phoneNumber,
                 'password' => $password,
-                'remember_token' => 'admin',
+                'avatar' => 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+                'work_start_date' => $faker->date,
+                'phone' => $faker->phoneNumber,
+                'address' => $faker->address,
+                'depart_id' => rand(1, 10),
+                'work_title' => $faker->jobTitle,
+                'plan_id' => rand(1, 10),
+                'team_id' => rand(1, 10),
                 'role_id' => $i + 1,
+                'active' => rand(true, false),
+                'remember_token' => 'admin',
             ]);
         }
     }
