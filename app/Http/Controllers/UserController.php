@@ -11,8 +11,12 @@ class UserController extends Controller
 {
     public function getUserList()
     {
-        $users = User::where('users.is_del', '0')
-        ->where('company_id', 1)
+        $users = User::select('users.*', 'company_plans.plan_name')
+        ->leftjoin('company_plans', 'company_plans.plan_id', 'users.plan_id')
+        // ->leftjoin('company_departs', 'company_departs.depart_id', 'users.depart_id')
+        // ->leftjoin('teams_basics', 'teams_basics.team_id', 'users.team_id')
+        ->where('users.is_del', '0')
+        ->where('users.company_id', 1)
         ->get();
 
         return new UserResource($users);
