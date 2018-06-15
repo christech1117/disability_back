@@ -35,6 +35,15 @@ Route::group(['middleware' => 'cors'], function()
         Route::put('del/{id}', 'CompanyBasicController@deleteCompanyBasic');
     });
 
+    # 單位管理
+    Route::group(['prefix'=>'company/department'], function()
+    {
+        Route::get('/', 'CompanyDepartmentController@getCompanyDepartmentList');
+        Route::post('/', 'CompanyDepartmentController@createCompanyDepartment');
+        Route::put('{id}', 'CompanyDepartmentController@updateCompanyDepartment');
+        Route::delete('{id}', 'CompanyDepartmentController@deleteCompanyPlan');
+    });
+
     # 方案管理
     Route::group(['prefix'=>'company/plan'], function()
     {
