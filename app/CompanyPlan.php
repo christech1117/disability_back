@@ -19,5 +19,6 @@ class CompanyPlan extends Model
         'price',
         'description',
         'company_id',
+        'is_del'
     ];
 }

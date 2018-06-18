@@ -22,7 +22,7 @@ class CreateCompanyDepartmentsTable extends Migration
             $table->integer('plan_id')->comment('方案');
             $table->integer('user_id')->nullable()->comment('主責人');
             $table->string('address')->nullable()->comment('住址');
-
+            $table->string('is_del')->default(false)->comment('是否刪除');
             // 居住、就業...
             $table->timestamps();
         });

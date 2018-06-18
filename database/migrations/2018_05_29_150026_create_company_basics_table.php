@@ -27,7 +27,7 @@ class CreateCompanyBasicsTable extends Migration
             $table->enum('job', ['Sheltered', 'Supportive'])->comment('組織服務內容，就業');
             $table->string('education')->nullable()->comment('組織服務內容，教育');
             $table->string('other')->nullable()->comment('組織服務內容，其他');
-            $table->string('is_del')->default(0)->comment('是否刪除');
+            $table->string('is_del')->default(false)->comment('是否刪除');
             $table->timestamps();
         });
     }

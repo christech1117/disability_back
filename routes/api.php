@@ -41,16 +41,16 @@ Route::group(['middleware' => 'cors'], function()
         Route::get('/', 'CompanyDepartmentController@getCompanyDepartmentList');
         Route::post('/', 'CompanyDepartmentController@createCompanyDepartment');
         Route::put('{id}', 'CompanyDepartmentController@updateCompanyDepartment');
-        Route::delete('{id}', 'CompanyDepartmentController@deleteCompanyPlan');
+        Route::put('del/{id}', 'CompanyDepartmentController@deleteCompanyDepartment');
     });
 
     # 方案管理
     Route::group(['prefix'=>'company/plan'], function()
     {
-        Route::get('/{id}', 'CompanyPlanController@getCompanyPlanList');
+        Route::get('/', 'CompanyPlanController@getCompanyPlanList');
         Route::post('/', 'CompanyPlanController@createCompanyPlan');
         Route::put('{id}', 'CompanyPlanController@updateCompanyPlan');
-        Route::delete('{id}', 'CompanyPlanController@deleteCompanyPlan');
+        Route::put('del/{id}', 'CompanyPlanController@deleteCompanyPlan');
     });
 
     # 人員管理
@@ -59,6 +59,6 @@ Route::group(['middleware' => 'cors'], function()
         Route::get('/', 'UserController@getUserList');
         Route::post('/', 'UserController@createUser');
         Route::put('{id}', 'UserController@updateUser');
-        Route::delete('{id}', 'UserController@deleteUser');
+        Route::put('del/{id}', 'UserController@deleteUser');
     });
 });

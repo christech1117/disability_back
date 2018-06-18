@@ -23,6 +23,7 @@ class CreateCompanyPlansTable extends Migration
             $table->date('service_end_date')->nullable()->comment('服務結束日期');
             $table->string('price')->default(0)->comment('收費');
             $table->string('description')->nullable()->comment('說明');
+            $table->string('is_del')->default(false)->comment('是否刪除');
             $table->timestamps();
         });
     }

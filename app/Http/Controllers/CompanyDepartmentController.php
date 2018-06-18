@@ -14,34 +14,35 @@ class CompanyDepartmentController extends Controller
     {
         $service_count = User::count(); // 服務人數
 
-        $plan = CompanyDepartment::select('company_departments.*', 'users.*')
+        $department = CompanyDepartment::select('company_departments.*', 'users.*')
         ->leftjoin('users', 'users.id', 'company_departments.user_id')
+        ->where('company_departments.is_del', '0')
         // ->where('company_departments.company_id', Input::get('company_id'))
         ->get();
-        return ['data'=>$plan, 'code'=>20000];
-        return new CompanyPlanResource($plan);
+        return ['data'=>$department, 'code'=>20000];
+        return new CompanyDepartmentResource($department);
     }
 
-    public function createCompanyPlan(Request $request)
+    public function createCompanyDepartment(Request $request)
     {
-        $plan = CompanyPlan::create($request->all());
+        $department = CompanyDepartment::create($request->all());
 
-        return ['data' => $plan, 'code' => 20000];
+        return ['data' => $department, 'code' => 20000];
     }
 
-    public function updateCompanyPlan(Request $request, $id)
+    public function updateCompanyDepartment(Request $request, $id)
     {
-        $plan = CompanyPlan::findOrFail($id);
-        $plan->update($request->all());
+        $department = CompanyDepartment::findOrFail($id);
+        $department->update($request->all());
 
-    return new CompanyPlanResource($plan);
+    return new CompanyDepartmentResource($department);
     }
 
-    public function deleteCompanyPlan(Request $request, $id)
+    public function deleteCompanyDepartment(Request $request, $id)
     {
-        $plan = CompanyPlan::findOrFail($id);
-        $plan->update(['is_del' => 1]);
+        $department = CompanyDepartment::findOrFail($id);
+        $department->update(['is_del' => 1]);
 
-        return response()->json($plan, 200);
+        return ['data' => $department, 'code' => 20000];
     }
 }

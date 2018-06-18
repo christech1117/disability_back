@@ -67,6 +67,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update(['is_del' => 1]);
 
-        return response()->json($user, 200);
+        return ['data' => $user, 'code' => 20000];
     }
 }
