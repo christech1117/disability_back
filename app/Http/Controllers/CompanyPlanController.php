@@ -35,7 +35,7 @@ class CompanyPlanController extends Controller
         $plan = CompanyPlan::findOrFail($id);
         $plan->update($request->all());
 
-        return new CompanyPlanResource($plan);
+        return ['data' => $plan, 'code' => 20000];
     }
 
     public function deleteCompanyPlan(Request $request, $id)

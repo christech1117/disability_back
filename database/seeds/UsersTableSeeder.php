@@ -19,7 +19,6 @@ class UsersTableSeeder extends Seeder
         // Let's make sure everyone has the same password and
         // let's hash it before the loop, or else our seeder
         // will be too slow.
-        $password = Hash::make('password');
         $income = ['no', 'look', 'edit'];
         $role = [
             'super_admin',
@@ -40,8 +39,8 @@ class UsersTableSeeder extends Seeder
             User::create([
                 'company_id' => '1',
                 'username' => $role[$i],
-                'email' => $role[$i],
-                'password' => $password,
+                'email' => $role[$i] . '@test.com',
+                'password' => Hash::make($role[$i]),
                 'avatar' => 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
                 'work_start_date' => $faker->date,
                 'phone' => $faker->phoneNumber,

@@ -22,8 +22,10 @@ class CreateCompanyDepartmentsTable extends Migration
             $table->integer('plan_id')->comment('方案');
             $table->integer('user_id')->nullable()->comment('主責人');
             $table->string('address')->nullable()->comment('住址');
-            $table->string('is_del')->default(false)->comment('是否刪除');
-            // 居住、就業...
+            $table->string('tel')->nullable()->comment('電話');
+            $table->integer('live_id')->nullable()->comment('日間編號，沒有則為null');
+            $table->integer('job_id')->nullable()->comment('就業編號，沒有則為null');
+            $table->boolean('is_del')->default(false)->comment('是否刪除');
             $table->timestamps();
         });
     }

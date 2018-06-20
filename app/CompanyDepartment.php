@@ -9,18 +9,15 @@ class CompanyDepartment extends Model
     protected $primaryKey = 'depart_id';
 
     protected $fillable = [
-        'company_name',
+        'sub_company_id',
+        'service_type',
+        'depart_name',
+        'plan_id',
         'user_id',
+        'address',
         'tel',
-        'email',
-        'service_area',
-        'service_people',
-        'budget',
-        'live',
-        'daytime',
-        'job',
-        'education',
-        'other',
+        'live_id',
+        'job_id',
         'is_del'
     ];
 }

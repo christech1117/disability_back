@@ -14,12 +14,13 @@ class CompanyDepartmentController extends Controller
     {
         $service_count = User::count(); // 服務人數
 
-        $department = CompanyDepartment::select('company_departments.*', 'users.*')
+        $department = CompanyDepartment::select('company_departments.*', 'users.id as user_id', 'users.username', 'users.phone', 'company_plans.plan_name')
         ->leftjoin('users', 'users.id', 'company_departments.user_id')
+        ->leftjoin('company_plans', 'company_departments.plan_id', 'company_plans.plan_id')
         ->where('company_departments.is_del', '0')
         // ->where('company_departments.company_id', Input::get('company_id'))
         ->get();
-        return ['data'=>$department, 'code'=>20000];
+
         return new CompanyDepartmentResource($department);
     }
 
@@ -35,7 +36,7 @@ class CompanyDepartmentController extends Controller
         $department = CompanyDepartment::findOrFail($id);
         $department->update($request->all());
 
-    return new CompanyDepartmentResource($department);
+        return ['data' => $department, 'code' => 20000];
     }
 
     public function deleteCompanyDepartment(Request $request, $id)

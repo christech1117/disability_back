@@ -14,9 +14,26 @@ class CompanyPlanResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'data' => parent::toArray($request),
-            'code' => 20000
-        ];
+        $datas = parent::toArray($request);
+
+        foreach ($datas as $data) {
+            $data = [
+                'plan_id' => $data['plan_id'],
+                'company_id' => $data['company_id'],
+                'user_id' => $data['user_id'],
+                'value' => $data['plan_name'],
+                'area_name' => $data['area_name'],
+                'service_start_date' => $data['service_start_date'],
+                'service_end_date' => $data['service_end_date'],
+                'price' => $data['price'],
+                'description' => $data['description'],
+                'username' => $data['username'],
+                'email' => $data['email'],
+                'phone' => $data['phone'],
+            ];
+            $new_datas[] = $data;
+        }
+
+        return array('data' => $new_datas, 'code' => 20000);
     }
 }

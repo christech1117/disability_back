@@ -22,10 +22,13 @@ class CompanyDepartmentTableSeeder extends Seeder
             CompanyDepartment::create([
                 'depart_type' => $depart_type[array_rand($depart_type)],
                 'service_type' => rand(1, 5),
-                'depart_name' => $faker->name,
+                'depart_name' => $faker->jobTitle,
                 'plan_id' => $i + 1,
                 'user_id' => $i + 1,
-                'address' => $faker->address
+                'address' => $faker->address,
+                'tel' => $faker->phoneNumber,
+                'live_id' => $i + 1,
+                'job_id' => $i + 1
             ]);
         }
     }
