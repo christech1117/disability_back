@@ -12,8 +12,6 @@ use Illuminate\Http\Request;
 |
 */
 
-
-
 Route::group(['middleware' => 'cors'], function()
 {
     # 登入
@@ -25,40 +23,54 @@ Route::group(['middleware' => 'cors'], function()
         Route::post('logout', 'AuthController@logout');
     });
 
-    # 組織基本資料
-    Route::group(['prefix'=>'company/basic'], function()
+    # 組織管理
+    Route::group(['prefix'=>'company'], function()
     {
-        Route::get('/', 'CompanyBasicController@index');
-        Route::get('{id}', 'CompanyBasicController@getCompanyBasic');
-        Route::post('/', 'CompanyBasicController@createCompanyBasic');
-        Route::put('{id}', 'CompanyBasicController@updateCompanyBasic');
-        Route::put('del/{id}', 'CompanyBasicController@deleteCompanyBasic');
+        # 組織基本資料
+        Route::group(['prefix'=>'basic'], function()
+        {
+            Route::get('/', 'CompanyBasicController@index');
+            Route::get('{id}', 'CompanyBasicController@getCompanyBasic');
+            Route::post('/', 'CompanyBasicController@createCompanyBasic');
+            Route::put('{id}', 'CompanyBasicController@updateCompanyBasic');
+            Route::put('del/{id}', 'CompanyBasicController@deleteCompanyBasic');
+        });
+        # 單位管理
+        Route::group(['prefix'=>'department'], function()
+        {
+            Route::get('/', 'CompanyDepartmentController@getCompanyDepartmentList');
+            Route::post('/', 'CompanyDepartmentController@createCompanyDepartment');
+            Route::put('{id}', 'CompanyDepartmentController@updateCompanyDepartment');
+            Route::put('del/{id}', 'CompanyDepartmentController@deleteCompanyDepartment');
+        });
+        # 方案管理
+        Route::group(['prefix'=>'plan'], function()
+        {
+            Route::get('/', 'CompanyPlanController@getCompanyPlanList');
+            Route::post('/', 'CompanyPlanController@createCompanyPlan');
+            Route::put('{id}', 'CompanyPlanController@updateCompanyPlan');
+            Route::put('del/{id}', 'CompanyPlanController@deleteCompanyPlan');
+        });
+        # 人員管理
+        Route::group(['prefix'=>'user'], function()
+        {
+            Route::get('/', 'UserController@getUserList');
+            Route::post('/', 'UserController@createUser');
+            Route::put('{id}', 'UserController@updateUser');
+            Route::put('del/{id}', 'UserController@deleteUser');
+        });
     });
 
-    # 單位管理
-    Route::group(['prefix'=>'company/department'], function()
+    # 個人層級
+    Route::group(['prefix'=>'person'], function()
     {
-        Route::get('/', 'CompanyDepartmentController@getCompanyDepartmentList');
-        Route::post('/', 'CompanyDepartmentController@createCompanyDepartment');
-        Route::put('{id}', 'CompanyDepartmentController@updateCompanyDepartment');
-        Route::put('del/{id}', 'CompanyDepartmentController@deleteCompanyDepartment');
-    });
-
-    # 方案管理
-    Route::group(['prefix'=>'company/plan'], function()
-    {
-        Route::get('/', 'CompanyPlanController@getCompanyPlanList');
-        Route::post('/', 'CompanyPlanController@createCompanyPlan');
-        Route::put('{id}', 'CompanyPlanController@updateCompanyPlan');
-        Route::put('del/{id}', 'CompanyPlanController@deleteCompanyPlan');
-    });
-
-    # 人員管理
-    Route::group(['prefix'=>'company/user'], function()
-    {
-        Route::get('/', 'UserController@getUserList');
-        Route::post('/', 'UserController@createUser');
-        Route::put('{id}', 'UserController@updateUser');
-        Route::put('del/{id}', 'UserController@deleteUser');
+        # 服務人員管理
+        Route::group(['prefix'=>'serviceuser'], function()
+        {
+            Route::get('/', 'ServiceUserController@getServiceUserList');
+            Route::post('/', 'ServiceUserController@createServiceUser');
+            Route::put('{id}', 'ServiceUserController@updateServiceUser');
+            Route::put('del/{id}', 'ServiceUserController@deleteServiceUser');
+        });
     });
 });
