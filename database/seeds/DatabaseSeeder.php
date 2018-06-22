@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CompanyDepartmentTableSeeder::class); // 單位管理
         $this->call(CompanyDapartmentTypeTableSeeder::class); // 單位管理類型表
         $this->call(CompanyPlanTableSeeder::class); // 方案管理
-        // $this->call(PersonServiceUserSeeder::class); // 服務人員管理
+        $this->call(PersonServiceUserSeeder::class); // 服務人員管理
         $this->call(PersonObstacleTypeSeeder::class); // 障礙種類表
     }
 }

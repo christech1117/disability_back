@@ -14,10 +14,11 @@ class CreatePersonServiceUsersTable extends Migration
     public function up()
     {
         Schema::create('person_service_users', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->comment('服務人員管理');
+            $table->integer('company_id')->comment('所屬公司編號');
             $table->string('name')->comment('姓名');
             $table->string('birthday')->comment('出生日期');
-            $table->enum('sex',['boy', 'girl'])->comment('性別');
+            $table->enum('sex',['male', 'female'])->comment('性別');
             $table->string('identity')->unique()->comment('身分證字號');
             $table->date('publish_date')->nullable()->comment('手冊核發日期');
             $table->date('identify_date')->nullable()->comment('後續鑑定日期');
@@ -34,6 +35,7 @@ class CreatePersonServiceUsersTable extends Migration
             $table->string('care_people')->comment('主要照顧者');
             $table->string('decided_people')->comment('主要決策者');
             $table->string('education')->comment('教育程度');
+            $table->boolean('is_del')->default(false)->comment('是否刪除');
             $table->timestamps();
         });
     }
