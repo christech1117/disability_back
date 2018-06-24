@@ -26,8 +26,8 @@ class CreatePersonServiceUsersTable extends Migration
             $table->enum('obstacle_level', ['low', 'medium', 'severe', 'vary_severe'])->comment('障礙等級');
             $table->enum('marriage', ['unmarried', 'married', 'other'])->comment('婚姻狀況');
             $table->integer('marriage_memo')->nullable()->comment('婚姻狀況(子/女幾人)');
-            $table->string('house_adress')->comment('戶籍地址');
-            $table->string('contact_adress')->comment('通訊地址');
+            $table->string('house_address')->comment('戶籍地址');
+            $table->string('contact_address')->comment('通訊地址');
             $table->string('family_img')->comment('家系圖暨生態圖');
             $table->string('height')->comment('身高');
             $table->string('weight')->comment('體重');

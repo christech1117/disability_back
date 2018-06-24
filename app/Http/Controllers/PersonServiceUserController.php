@@ -5,19 +5,21 @@ namespace App\Http\Controllers;
 use App\User;
 use App\PersonServiceUser;
 use Illuminate\Http\Request;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\PersonServiceUserResource;
 use Illuminate\Support\Facades\Input;
 
 class PersonServiceUserController extends Controller
 {
     public function getServiceUserList()
     {
-        return $service_user = PersonServiceUser::select('person_service_users.*')
+        $service_user = PersonServiceUser::select('person_service_users.name', 'person_service_users.birthday', 'person_service_users.sex', 'person_service_users.identity', 'person_service_users.publish_date', 'person_service_users.identify_date', 'person_service_users.avatar')
         ->where('person_service_users.is_del', '0')
         ->where('person_service_users.company_id', 1)
         ->get();
 
-        return new UserResource($service_user);
+        return ['data' => $service_user, 'code' => 20000];
+
+        return new PersonServiceUserResource($service_user);
     }
 
     public function getServiceUser($id)
