@@ -34,19 +34,33 @@ class UsersTableSeeder extends Seeder
             'pos',
             'family'
         ];
+        // $username = [
+            // '系統管理員',
+            // '組織管理員',
+            // '組織主管',
+            // '部門主管',
+            // '組\科\室主管',
+            // 'ISP 促進者',
+            // '執行監督者',
+            // '支持者',
+            // 'OEES 訪員',
+            // 'SIS 訪員',
+            // 'POS 訪員',
+            // '服務對象\家屬'
+        // ];
         $username = [
-            '系統管理員',
-            '組織管理員',
-            '組織主管',
-            '部門主管',
-            '組\科\室主管',
-            'ISP 促進者',
-            '執行監督者',
-            '支持者',
-            'OEES 訪員',
-            'SIS 訪員',
-            'POS 訪員',
-            '服務對象\家屬'
+            'super_admin',
+            'admin',
+            'company_leader',
+            'department_leader',
+            'group_leader',
+            'isp',
+            'supervisor',
+            'supporter',
+            'oees',
+            'sis',
+            'pos',
+            'family'
         ];
 
         for ($i = 0; $i < 12; $i++) {

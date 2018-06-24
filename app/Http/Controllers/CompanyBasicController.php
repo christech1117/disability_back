@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\PersonServiceUser;
 use App\CompanyBasic;
 use Illuminate\Http\Request;
 use App\Http\Resources\CompanyBasicResource;
@@ -16,7 +17,7 @@ class CompanyBasicController extends Controller
 
     public function getCompanyBasic($id)
     {
-        $service_count = User::count(); // 服務人數
+        $service_count = PersonServiceUser::count(); // 服務人數
         $user_count = User::count(); // 全職人員數量
 
         $companyBasic = CompanyBasic::select('company_basics.*', 'users.username')
