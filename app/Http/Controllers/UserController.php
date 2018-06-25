@@ -11,10 +11,10 @@ class UserController extends Controller
 {
     public function getUserList()
     {
-        $user = User::select('users.*', 'company_plans.plan_id', 'company_plans.plan_name', 'roles.id as role_id', 'roles.title')
+        $user = User::select('users.*', 'company_plans.plan_id', 'company_plans.plan_name', 'company_departments.depart_name', 'roles.id as role_id', 'roles.title')
         ->leftjoin('company_plans', 'company_plans.plan_id', 'users.plan_id')
         ->leftjoin('roles', 'roles.id', 'users.role_id')
-        // ->leftjoin('company_departs', 'company_departs.depart_id', 'users.depart_id')
+        ->leftjoin('company_departments', 'company_departments.depart_id', 'users.depart_id')
         // ->leftjoin('teams_basics', 'teams_basics.team_id', 'users.team_id')
         ->where('users.is_del', '0')
         ->where('users.company_id', 1)

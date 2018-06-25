@@ -26,7 +26,7 @@ class UserResource extends JsonResource
                 'email' => $data['email'],
                 'address' => $data['address'],
                 'depart_id' => $data['depart_id'],
-                // 'depart_name' => $data['depart_name'],
+                'depart_name' => $data['depart_name'],
                 'work_title' => $data['work_title'],
                 'plan_id' => (string)$data['plan_id'],
                 'plan_name' => $data['plan_name'],
