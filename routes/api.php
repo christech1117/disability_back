@@ -65,12 +65,6 @@ Route::group(['middleware' => 'cors'], function()
     Route::group(['prefix'=>'person'], function()
     {
         # 服務人員管理
-        Route::group(['prefix'=>'serviceuser'], function()
-        {
-            Route::get('/', 'PersonServiceUserController@getServiceUserList');
-            Route::post('/', 'PersonServiceUserController@createServiceUser');
-            Route::put('{id}', 'PersonServiceUserController@updateServiceUser');
-            Route::put('del/{id}', 'PersonServiceUserController@deleteServiceUser');
-        });
+        Route::resource('serviceuser', 'PersonServiceUserController');
     });
 });

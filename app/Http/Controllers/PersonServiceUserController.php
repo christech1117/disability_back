@@ -10,61 +10,44 @@ use Illuminate\Support\Facades\Input;
 
 class PersonServiceUserController extends Controller
 {
-    public function getServiceUserList()
+    public function show($id)
     {
-        $service_user = PersonServiceUser::select('person_service_users.name', 'person_service_users.birthday', 'person_service_users.sex', 'person_service_users.identity', 'person_service_users.publish_date', 'person_service_users.identify_date', 'person_service_users.avatar')
-        ->where('person_service_users.is_del', '0')
-        ->where('person_service_users.company_id', 1)
-        ->get();
-
-        return ['data' => $service_user, 'code' => 20000];
+        $service_user = PersonServiceUser::where('company_id', $id)->get();
 
         return new PersonServiceUserResource($service_user);
     }
 
-    public function getServiceUser($id)
+    public function store(Request $request)
     {
-        $service_count = User::count(); // 服務人數
-        $user_count = PersonServiceUser::count(); // 全職人員數量
+        $service_user = new PersonServiceUser;
 
-        $service_user = PersonServiceUser::select('company_basics.*', 'users.username')
-        ->leftjoin('users', 'users.id', 'company_basics.user_id')
-        ->where('company_basics.company_id', $id)
-        ->firstOrFail();
+        $service_user->name = $request->name;
+        $service_user->company_id = $request->company_id;
+        $service_user->birthday = $request->birthday;
+        $service_user->identity = $request->identity;
+        $service_user->house_address = $request->house_address;
+        $service_user->contact_address = $request->contact_address;
 
-        $service_user->setAttribute('service_count', $service_count);
-        $service_user->setAttribute('user_count', $user_count);
-
-        return new userResource($service_user);
-    }
-
-    public function createServiceUser(Request $request)
-    {
-        $service_user = PersonServiceUser::create($request->all());
+        $service_user->save();
 
         return ['data' => $service_user, 'code' => 20000];
     }
 
-    public function updateServiceUser(Request $request, $id)
+    public function update(Request $request)
     {
-        $service_user = PersonServiceUser::select('users.*', 'company_plans.plan_id', 'company_plans.plan_name', 'roles.id as role_id', 'roles.title')
-        ->leftjoin('company_plans', 'company_plans.plan_id', 'users.plan_id')
-        ->leftjoin('roles', 'roles.id', 'users.role_id')
-        // ->leftjoin('company_departs', 'company_departs.depart_id', 'users.depart_id')
-        // ->leftjoin('teams_basics', 'teams_basics.team_id', 'users.team_id')
-        ->where('users.is_del', '0')
-        ->where('users.company_id', 1)
-        ->where('users.id', $id)
-        ->firstOrFail();
-        $service_user->update($request->all());
+        $service_user = PersonServiceUser::find(1);
+
+        $service_user->name = $request->name;
+
+        $service_user->save();
 
         return ['data' => $service_user, 'code' => 20000];
     }
 
-    public function deleteServiceUser(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
         $service_user = PersonServiceUser::findOrFail($id);
-        $service_user->update(['is_del' => 1]);
+        $service_user->delete();
 
         return ['data' => $service_user, 'code' => 20000];
     }

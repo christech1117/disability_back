@@ -14,7 +14,7 @@ class PersonServiceUserResource extends JsonResource
      */
     public function toArray($request)
     {
-        $datas = parent::toArray($request);
+        return $datas = parent::toArray($request);
 
         foreach ($datas as $data) {
             $data = [
