@@ -16,7 +16,7 @@ class UserController extends Controller
         ->leftjoin('roles', 'roles.id', 'users.role_id')
         ->leftjoin('company_departments', 'company_departments.depart_id', 'users.depart_id')
         // ->leftjoin('teams_basics', 'teams_basics.team_id', 'users.team_id')
-        ->where('users.is_del', '0')
+        // ->where('users.is_del', '0')
         ->where('users.company_id', 1)
         ->get();
 

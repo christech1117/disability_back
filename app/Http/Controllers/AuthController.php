@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Transformers\UserTransformer;
+
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\AuthResource;
 use Illuminate\Support\Facades\Input;
+
 
 class AuthController extends Controller
 {
@@ -23,28 +25,45 @@ class AuthController extends Controller
 
     protected function login(Request $request)
     {
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password]))
-        {
-            $userInfo = Auth::user();
+        // 驗證規則：由于业务需求，这里我更改了一下登录的用户名，使用手机号码登录
+        $rules = [
+            'username' => 'required|string|max:20',
+            'password' => 'required|string|max:20',
+        ];
 
-            return new AuthResource($userInfo);
-        } else {
-            return 'false';
+        // 驗證參數，如果驗證失敗，則會拋出 ValidationException 的錯誤
+        $params = $this->validate($request, $rules);
+
+        // 使用 Auth 登入用户，如果登入失敗return，若成功則return 20000 的 code 和 token
+        if (!$token = Auth::guard('api')->attempt($params)) {
+            return response(['message' => '帳號或密碼錯誤']);
         }
+        $userInfo = Auth::user();
+
+        // $user = User::find($userInfo->id);
+        // $user->token = $token;
+        // $user->save();
+
+        return response(['data' => ['token'=>$token], 'code' => 20000]);
     }
 
     protected function getUserinfo()
     {
-        $userInfo = User::
-        where('users.remember_token', Input::get('token'))
+        $userInfo = User::select('users.*', 'roles.*')
         ->leftjoin('roles', 'users.role_id', 'roles.id')
-        ->firstOrFail();
+        ->where('token', Input::get('token'))
+        ->first();
 
+        if (!$userInfo) {
+            return response(['code' => 50014]);
+        }
         return new AuthResource($userInfo);
     }
 
     protected function logout(Request $request)
     {
-        return $user = array('data' => Auth::logout(), 'code' => 20000);
+        Auth::guard('api')->logout();
+
+        return response(['message' => '登出成功', 'code' => 20000]);
     }
 }

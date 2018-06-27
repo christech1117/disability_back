@@ -20,9 +20,9 @@ class AuthResource extends JsonResource
             'description' => $this->description,
             'username' => $this->username,
             'roles' => [$this->title],
-            'token' => 'admin',
+            'token' => $this->token,
         ];
 
-        return array('data' => $data, 'code' => 20000);
+        return ['data' => $data, 'code' => 20000];
     }
 }

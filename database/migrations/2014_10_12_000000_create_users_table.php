@@ -31,8 +31,8 @@ class CreateUsersTable extends Migration
             $table->string('approve_status')->nullable()->comment('審核');
             $table->enum('income', ['no', 'look', 'edit'])->nullable()->comment('個人收入');
             $table->boolean('active')->default(true)->comment('工作狀態：就業or離職');
-            $table->boolean('is_del')->default(false)->comment('是否刪除');
-            $table->rememberToken();
+            $table->longText('token')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
