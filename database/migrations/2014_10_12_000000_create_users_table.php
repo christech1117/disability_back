@@ -27,12 +27,12 @@ class CreateUsersTable extends Migration
             $table->string('work_title')->nullable()->comment('職稱');
             $table->integer('plan_id')->nullable()->comment('方案計畫名稱');
             $table->string('team_id')->nullable()->comment('所屬團隊(可能會有複數團隊)');
-            $table->integer('role_id')->nullable()->comment('角色');
+            $table->integer('role_id')->comment('角色');
             $table->string('approve_status')->nullable()->comment('審核');
             $table->enum('income', ['no', 'look', 'edit'])->nullable()->comment('個人收入');
             $table->boolean('active')->default(true)->comment('工作狀態：就業or離職');
-            $table->boolean('is_del')->default(false)->comment('是否刪除');
-            $table->rememberToken();
+            $table->longText('token')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

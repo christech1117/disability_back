@@ -19,8 +19,12 @@ Route::group(['middleware' => 'cors'], function()
     {
         Route::post('register', 'AuthController@register');
         Route::post('login', 'AuthController@login');
-        Route::get('info', 'AuthController@getUserinfo');
-        Route::post('logout', 'AuthController@logout');
+
+        Route::group(['middleware' => 'jwt.auth', 'jwt.refresh'] , function()
+        {
+            Route::get('info', 'AuthController@getUserinfo');
+            Route::post('logout', 'AuthController@logout');
+        });
     });
 
     # 組織管理

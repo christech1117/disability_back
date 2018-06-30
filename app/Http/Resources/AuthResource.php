@@ -19,10 +19,9 @@ class AuthResource extends JsonResource
             'avatar' => "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
             'description' => $this->description,
             'username' => $this->username,
-            'roles' => [$this->title],
-            'token' => 'admin',
+            'roles' => [$this->roles],
         ];
 
-        return array('data' => $data, 'code' => 20000);
+        return ['data' => $data, 'code' => 20000];
     }
 }

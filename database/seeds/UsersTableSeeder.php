@@ -81,7 +81,7 @@ class UsersTableSeeder extends Seeder
                 'approve_status' => 'sis',
                 'income' => $income[array_rand($income)],
                 'active' => rand(true, false),
-                'remember_token' => 'admin',
+                'token' => 'admin'
             ]);
         }
     }
