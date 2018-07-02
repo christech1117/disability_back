@@ -10,28 +10,25 @@ use App\Http\Resources\CompanyDepartmentResource;
 
 class CompanyDepartmentController extends Controller
 {
-    public function getCompanyDepartmentList()
+    public function show($id)
     {
-        $service_count = User::count(); // 服務人數
-
         $department = CompanyDepartment::select('company_departments.*', 'users.id as user_id', 'users.username', 'users.phone', 'company_plans.plan_name')
         ->leftjoin('users', 'users.id', 'company_departments.user_id')
         ->leftjoin('company_plans', 'company_departments.plan_id', 'company_plans.plan_id')
-        ->where('company_departments.is_del', '0')
-        // ->where('company_departments.company_id', Input::get('company_id'))
+        ->where('company_departments.company_id', $id)
         ->get();
 
         return new CompanyDepartmentResource($department);
     }
 
-    public function createCompanyDepartment(Request $request)
+    public function store(Request $request)
     {
         $department = CompanyDepartment::create($request->all());
 
         return ['data' => $department, 'code' => 20000];
     }
 
-    public function updateCompanyDepartment(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $department = CompanyDepartment::findOrFail($id);
         $department->update($request->all());
@@ -39,10 +36,10 @@ class CompanyDepartmentController extends Controller
         return ['data' => $department, 'code' => 20000];
     }
 
-    public function deleteCompanyDepartment(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
         $department = CompanyDepartment::findOrFail($id);
-        $department->update(['is_del' => 1]);
+        $department->delete();
 
         return ['data' => $department, 'code' => 20000];
     }

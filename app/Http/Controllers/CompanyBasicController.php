@@ -12,10 +12,12 @@ class CompanyBasicController extends Controller
 {
     public function index()
     {
-        return CompanyBasic::where('company_basics.is_del', '0')->get();
+        $companyBasic = CompanyBasic::all();
+
+        return ['data' => $companyBasic, 'code' => 20000]; 
     }
 
-    public function getCompanyBasic($id)
+    public function show($id)
     {
         $service_count = PersonServiceUser::count(); // 服務人數
         $user_count = User::count(); // 全職人員數量
@@ -31,26 +33,26 @@ class CompanyBasicController extends Controller
         return new CompanyBasicResource($companyBasic);
     }
 
-    public function createCompanyBasic(Request $request)
+    public function create(Request $request)
     {
         $companyBasic = CompanyBasic::create($request->all());
 
-        return response()->json($companyBasic, 201);
+        return ['data' => $companyBasic, 'code' => 20000];
     }
 
-    public function updateCompanyBasic(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $companyBasic = CompanyBasic::findOrFail($id);
         $companyBasic->update($request->all());
 
-        return new CompanyBasicResource($companyBasic);
+        return ['data' => $companyBasic, 'code' => 20000];
     }
 
-    public function deleteCompanyBasic(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
         $companyBasic = CompanyBasic::findOrFail($id);
-        $companyBasic->update(['is_del' => 1]);
+        $companyBasic->delete();
 
-        return response()->json($companyBasic, 200);
+        return ['data' => $companyBasic, 'code' => 20000];
     }
 }

@@ -20,6 +20,8 @@ class CompanyDepartmentTableSeeder extends Seeder
 
         for ($i = 0; $i < 50; $i++) {
             CompanyDepartment::create([
+                'company_id' => rand(1, 5),
+                'sub_company_id' => rand(1, 5),
                 'depart_type' => $depart_type[array_rand($depart_type)],
                 'service_type' => rand(1, 5),
                 'depart_name' => $faker->jobTitle,

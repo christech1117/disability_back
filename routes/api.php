@@ -30,45 +30,27 @@ Route::group(['middleware' => 'cors'], function()
     # 組織管理
     Route::group(['prefix'=>'company'], function()
     {
-        # 組織基本資料
-        Route::group(['prefix'=>'basic'], function()
-        {
-            Route::get('/', 'CompanyBasicController@index');
-            Route::get('{id}', 'CompanyBasicController@getCompanyBasic');
-            Route::post('/', 'CompanyBasicController@createCompanyBasic');
-            Route::put('{id}', 'CompanyBasicController@updateCompanyBasic');
-            Route::put('del/{id}', 'CompanyBasicController@deleteCompanyBasic');
-        });
-        # 單位管理
-        Route::group(['prefix'=>'department'], function()
-        {
-            Route::get('/', 'CompanyDepartmentController@getCompanyDepartmentList');
-            Route::post('/', 'CompanyDepartmentController@createCompanyDepartment');
-            Route::put('{id}', 'CompanyDepartmentController@updateCompanyDepartment');
-            Route::put('del/{id}', 'CompanyDepartmentController@deleteCompanyDepartment');
-        });
-        # 方案管理
-        Route::group(['prefix'=>'plan'], function()
-        {
-            Route::get('/', 'CompanyPlanController@getCompanyPlanList');
-            Route::post('/', 'CompanyPlanController@createCompanyPlan');
-            Route::put('{id}', 'CompanyPlanController@updateCompanyPlan');
-            Route::put('del/{id}', 'CompanyPlanController@deleteCompanyPlan');
-        });
-        # 人員管理
-        Route::group(['prefix'=>'user'], function()
-        {
-            Route::get('/', 'UserController@getUserList');
-            Route::post('/', 'UserController@createUser');
-            Route::put('{id}', 'UserController@updateUser');
-            Route::put('del/{id}', 'UserController@deleteUser');
-        });
+        Route::resource('basic', 'CompanyBasicController'); // 組織基本資料
+        Route::resource('department', 'CompanyDepartmentController'); // 單位管理
+        Route::resource('plan', 'CompanyPlanController'); // 方案管理
+        Route::resource('user', 'UserController'); // 人員管理
     });
 
     # 個人層級
     Route::group(['prefix'=>'person'], function()
     {
-        # 服務人員管理
-        Route::resource('serviceuser', 'PersonServiceUserController');
+        Route::resource('serviceuser', 'PersonServiceUserController'); // 服務人員管理
+        # 個案基本資料
+        Route::resource('familystatus', 'PersonFamilyStatusController'); // 家庭狀況
+        // 醫療史
+        // 教育狀況
+        // 安置/訓練服務經歷
+        // 就業經歷
+        // 福利補助狀況
+        // 對服務需求與期待
+
+        # 支持強度量表(SIS)訪談紀錄
+        # 個別化支持服務計畫(ISP)
+        # 個人成果量表(POS)訪談紀錄
     });
 });

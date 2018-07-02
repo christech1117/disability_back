@@ -14,8 +14,9 @@ class PersonServiceUserResource extends JsonResource
      */
     public function toArray($request)
     {
-        return $datas = parent::toArray($request);
-
+        $datas = parent::toArray($request);
+        $new_datas = [];
+        
         foreach ($datas as $data) {
             $data = [
                 'company_id' => $data['company_id'],
@@ -36,8 +37,7 @@ class PersonServiceUserResource extends JsonResource
                 'blood' => $data['blood'],
                 'care_people' => $data['care_people'],
                 'decided_people' => $data['decided_people'],
-                'education' => $data['education'],
-                'is_del' => (string)$data['is_del']
+                'education' => $data['education']
             ];
             $new_datas[] = $data;
         }

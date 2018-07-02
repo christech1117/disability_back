@@ -15,6 +15,7 @@ class UserResource extends JsonResource
     public function toArray($request)
     {
         $datas = parent::toArray($request);
+        $new_datas = [];
 
         foreach ($datas as $data) {
             $data = [
@@ -33,14 +34,13 @@ class UserResource extends JsonResource
                 'team_id' => (string)$data['team_id'],
                 // 'tema_name' => $data['tema_name']
                 'role_id' => (string)$data['role_id'],
-                'role' => $data['title'],
+                // 'role' => $data['title'],
                 'approve_status' => $data['approve_status'],
                 'income' => $data['income'],
                 'active' => (string)$data['active']
             ];
             $new_datas[] = $data;
         }
-
 
         return array('data' => $new_datas, 'code' => 20000);
     }

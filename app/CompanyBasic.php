@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CompanyBasic extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'company_id';
 
     protected $fillable = [
@@ -21,6 +24,7 @@ class CompanyBasic extends Model
         'job',
         'education',
         'other',
-        'is_del'
     ];
+
+    protected $dates = ['deleted_at'];
 }

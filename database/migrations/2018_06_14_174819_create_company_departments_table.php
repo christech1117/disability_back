@@ -15,6 +15,7 @@ class CreateCompanyDepartmentsTable extends Migration
     {
         Schema::create('company_departments', function (Blueprint $table) {
             $table->increments('depart_id')->comment('部門/單位，上面還有子公司');
+            $table->integer('company_id')->nullable()->comment('公司編號');
             $table->integer('sub_company_id')->nullable()->comment('子公司編號');
             $table->enum('depart_type', ['day', 'live', 'job'])->comment('單位種類');
             $table->string('service_type')->comment('服務類型');
@@ -25,7 +26,7 @@ class CreateCompanyDepartmentsTable extends Migration
             $table->string('tel')->nullable()->comment('電話');
             $table->integer('live_id')->nullable()->comment('日間編號，沒有則為null');
             $table->integer('job_id')->nullable()->comment('就業編號，沒有則為null');
-            $table->boolean('is_del')->default(false)->comment('是否刪除');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

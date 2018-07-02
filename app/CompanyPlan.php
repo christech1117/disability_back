@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CompanyPlan extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'plan_id';
 
     protected $fillable = [
@@ -18,7 +21,8 @@ class CompanyPlan extends Model
         'service_end_date',
         'price',
         'description',
-        'company_id',
-        'is_del'
+        'company_id'
     ];
+
+    protected $dates = ['deleted_at'];
 }

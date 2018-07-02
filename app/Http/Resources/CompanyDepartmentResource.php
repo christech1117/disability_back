@@ -15,6 +15,7 @@ class CompanyDepartmentResource extends JsonResource
     public function toArray($request)
     {
         $datas = parent::toArray($request);
+        $new_datas = [];
 
         foreach ($datas as $data) {
             $data = [

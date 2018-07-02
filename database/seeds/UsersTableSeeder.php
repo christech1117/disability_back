@@ -65,7 +65,7 @@ class UsersTableSeeder extends Seeder
 
         for ($i = 0; $i < 12; $i++) {
             User::create([
-                'company_id' => '1',
+                'company_id' => rand(1, 3),
                 'username' => $username[$i],
                 'email' => $role[$i] . '@test.com',
                 'password' => Hash::make($role[$i]),
