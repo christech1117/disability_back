@@ -22,6 +22,7 @@ class CompanyBasicResource extends JsonResource
             'email' => $this->email,
             'service_area' => $this->service_area,
             'service_count' => $this->service_count,
+            'service_other' => $this->service_other,
             'user_count' => $this->user_count,
             'service_people' => $this->service_people,
             'budget' => $this->budget,

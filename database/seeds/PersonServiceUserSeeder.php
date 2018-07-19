@@ -22,7 +22,7 @@ class PersonServiceUserSeeder extends Seeder
 
         for ($i = 0; $i < 30; $i++) {
             PersonServiceUser::create([
-                'company_id' => rand(1, 10),
+                'company_id' => rand(1, 5),
                 'name' => $faker->name,
                 'birthday' => '2018-06-06',
                 'sex' => $sex[array_rand($sex)],
