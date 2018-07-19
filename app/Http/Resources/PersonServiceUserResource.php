@@ -19,6 +19,7 @@ class PersonServiceUserResource extends JsonResource
         
         foreach ($datas as $data) {
             $data = [
+                'id' => $data['id'],
                 'company_id' => $data['company_id'],
                 'name' => $data['name'],
                 'birthday' => $data['birthday'],

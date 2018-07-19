@@ -9,6 +9,12 @@ use App\Http\Resources\PersonServiceUserResource;
 
 class PersonServiceUserController extends Controller
 {
+    public function index()
+    {
+        $service_user = PersonServiceUser::all();
+
+        return new PersonServiceUserResource($service_user);
+    }
     public function show($id)
     {
         $service_user = PersonServiceUser::where('company_id', $id)->get();

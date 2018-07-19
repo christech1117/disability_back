@@ -24,7 +24,6 @@ class CompanyBasicTableSeeder extends Seeder
             CompanyBasic::create([
                 'company_name' => $faker->unique()->company,
                 'user_id' => $i + 1,
-                'tel' => $faker->phoneNumber,
                 'email' => $faker->email,
                 'service_area' => $service_area[array_rand($service_area)],
                 'service_people' => $service_people[array_rand($service_people)],

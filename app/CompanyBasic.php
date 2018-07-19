@@ -18,6 +18,7 @@ class CompanyBasic extends Model
         'email',
         'service_area',
         'service_people',
+        'service_other',
         'budget',
         'live',
         'daytime',
