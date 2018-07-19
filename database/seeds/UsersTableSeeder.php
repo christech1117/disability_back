@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
     {
         User::truncate();
 
-        // $faker = \Faker\Factory::create('zh_TW');
+        $faker = \Faker\Factory::create('zh_TW');
 
         // Let's make sure everyone has the same password and
         // let's hash it before the loop, or else our seeder

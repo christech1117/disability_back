@@ -14,7 +14,7 @@ class CompanyDepartmentTableSeeder extends Seeder
     {
         CompanyDepartment::truncate();
 
-        // $faker = \Faker\Factory::create('zh_TW');
+        $faker = \Faker\Factory::create('zh_TW');
 
         $depart_type = ['day', 'live', 'job'];
 

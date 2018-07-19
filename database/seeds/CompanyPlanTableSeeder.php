@@ -14,7 +14,7 @@ class CompanyPlanTableSeeder extends Seeder
     {
         CompanyPlan::truncate();
 
-        // $faker = \Faker\Factory::create('zh_TW');
+        $faker = \Faker\Factory::create('zh_TW');
 
         for ($i = 0; $i < 50; $i++) {
             CompanyPlan::create([

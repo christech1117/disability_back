@@ -15,7 +15,7 @@ class CompanyBasicTableSeeder extends Seeder
         // Let's truncate our existing records to start from scratch.
         CompanyBasic::truncate();
 
-        // $faker = \Faker\Factory::create('zh_TW');
+        $faker = \Faker\Factory::create('zh_TW');
         $service_area = ['city', 'suburb', 'complex'];
         $service_people = ['obstacles', 'old', 'spirit', 'Special'];
 

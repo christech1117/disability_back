@@ -14,7 +14,7 @@ class PersonServiceUserSeeder extends Seeder
     {
         PersonServiceUser::truncate();
 
-        // $faker = \Faker\Factory::create('zh_TW');
+        $faker = \Faker\Factory::create('zh_TW');
         $sex = ['male', 'female'];
         $marriage = ['unmarried','married','other'];
         $blood = ['A', 'B', 'AB', 'O'];
