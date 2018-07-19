@@ -2,10 +2,10 @@
 
 $url = parse_url(getenv("mysql://b701a49dc21744:277f01a1@us-cdbr-iron-east-04.cleardb.net/heroku_5183876432a883e?reconnect=true"));
 
-$host = $url["us-cdbr-iron-east-04.cleardb.net"];
-$username = $url["b701a49dc21744"];
-$password = $url["feling79041"];
-$database = substr($url["heroku_5183876432a883e"], 1);
+$host = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$database = substr($url["path"], 1);
 
 return [
 
