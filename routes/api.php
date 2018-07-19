@@ -41,7 +41,8 @@ Route::group(['middleware' => 'cors'], function()
     {
         Route::resource('serviceuser', 'PersonServiceUserController'); // 服務人員管理
         # 個案基本資料
-        Route::resource('familystatus', 'PersonFamilyStatusController'); // 家庭狀況
+        Route::resource('basic', 'PersonBasicController'); // 個案基本資料
+        // Route::resource('familystatus', 'PersonFamilyStatusController'); // 家庭狀況
         // 醫療史
         // 教育狀況
         // 安置/訓練服務經歷

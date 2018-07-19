@@ -24,10 +24,13 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $user = User::where('users.company_id', $id)
+        $user = User::
+        where('users.company_id', $id)
         ->leftjoin('company_departments', 'company_departments.user_id', 'users.id')
         ->leftjoin('company_plans', 'company_plans.user_id', 'users.id')
         ->get();
+
+        // return ['data' => $user, 'code' => 20000];
 
         return new userResource($user);
     }
