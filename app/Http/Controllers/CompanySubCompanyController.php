@@ -44,9 +44,14 @@ class CompanySubCompanyController extends Controller
      * @param  \App\CompanySubCompany  $companySubCompany
      * @return \Illuminate\Http\Response
      */
-    public function show(CompanySubCompany $companySubCompany)
+    public function show($id)
     {
-        //
+        $subCompany = CompanySubCompany::select('company_sub_companies.*')
+        ->leftjoin('company_basics', 'company_basics.company_id', 'company_sub_companies.company_id')
+        ->where('company_sub_companies.company_id', $id)
+        ->get();
+
+        return ['data' => $subCompany, 'code' => 20000];
     }
 
     /**
@@ -55,7 +60,7 @@ class CompanySubCompanyController extends Controller
      * @param  \App\CompanySubCompany  $companySubCompany
      * @return \Illuminate\Http\Response
      */
-    public function edit(CompanySubCompany $companySubCompany)
+    public function edit($id)
     {
         //
     }
@@ -67,7 +72,7 @@ class CompanySubCompanyController extends Controller
      * @param  \App\CompanySubCompany  $companySubCompany
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CompanySubCompany $companySubCompany)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,7 +83,7 @@ class CompanySubCompanyController extends Controller
      * @param  \App\CompanySubCompany  $companySubCompany
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CompanySubCompany $companySubCompany)
+    public function destroy($id)
     {
         //
     }

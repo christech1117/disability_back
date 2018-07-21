@@ -31,6 +31,7 @@ Route::group(['middleware' => 'cors'], function()
     Route::group(['prefix'=>'company'], function()
     {
         Route::resource('basic', 'CompanyBasicController'); // 組織基本資料
+        Route::resource('sub_company', 'CompanySubCompanyController'); // 子公司管理
         Route::resource('department', 'CompanyDepartmentController'); // 單位管理
         Route::resource('plan', 'CompanyPlanController'); // 方案管理
         Route::resource('user', 'UserController'); // 人員管理
