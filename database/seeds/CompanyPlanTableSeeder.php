@@ -18,7 +18,7 @@ class CompanyPlanTableSeeder extends Seeder
 
         for ($i = 0; $i < 50; $i++) {
             CompanyPlan::create([
-                'company_id' => rand(1, 10),
+                'company_id' => rand(1, 5),
                 'user_id' => $i + 1,
                 'plan_name' => $faker->unique()->jobTitle,
                 'area_name' => $faker->city,

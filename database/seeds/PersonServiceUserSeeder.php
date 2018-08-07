@@ -20,7 +20,7 @@ class PersonServiceUserSeeder extends Seeder
         $blood = ['A', 'B', 'AB', 'O'];
         $obstacle_level = ['low', 'medium', 'severe', 'vary_severe'];
 
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             PersonServiceUser::create([
                 'company_id' => rand(1, 5),
                 'name' => $faker->name,

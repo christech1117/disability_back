@@ -65,7 +65,7 @@ class UsersTableSeeder extends Seeder
 
         for ($i = 0; $i < 12; $i++) {
             User::create([
-                'company_id' => rand(1, 3),
+                'company_id' => rand(1, 5),
                 'username' => $username[$i],
                 'email' => $role[$i] . '@test.com',
                 'password' => Hash::make($role[$i]),
@@ -73,10 +73,10 @@ class UsersTableSeeder extends Seeder
                 'work_start_date' => $faker->date,
                 'phone' => $faker->phoneNumber,
                 'address' => $faker->address,
-                'depart_id' => rand(1, 10),
+                'depart_id' => rand(1, 5),
                 'work_title' => $faker->jobTitle,
-                'plan_id' => rand(1, 10),
-                'team_id' => rand(1, 10),
+                'plan_id' => rand(1, 5),
+                'team_id' => rand(1, 5),
                 'role_id' => $i + 1,
                 'approve_status' => 'sis',
                 'income' => $income[array_rand($income)],

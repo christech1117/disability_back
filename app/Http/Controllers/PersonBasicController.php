@@ -47,7 +47,7 @@ class PersonBasicController extends Controller
      */
     public function show($id)
     {
-        return $service_user = PersonServiceUser::where('person_service_users.id', $id)
+         $service_user = PersonServiceUser::where('person_service_users.id', $id)
         ->leftjoin('person_family_statuses', 'person_family_statuses.serviceuser_id', 'person_service_users.id')
         ->get();
 

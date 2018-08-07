@@ -16,7 +16,7 @@ class CompanySubCompanyTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create('zh_TW');
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             CompanySubCompany::create([
                 'company_id' => rand(1, 5),
                 'sub_companpy_name' => $faker->unique()->company

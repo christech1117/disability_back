@@ -17,6 +17,7 @@ class CompanyBasicResource extends JsonResource
         $data = [
             'company_id' => (string)$this->company_id,
             'company_name' => $this->company_name,
+            'user_id' => $this->user_id,
             'username' => $this->username,
             'tel' => $this->tel,
             'email' => $this->email,
