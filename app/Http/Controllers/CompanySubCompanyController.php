@@ -35,7 +35,9 @@ class CompanySubCompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $subCompany = CompanySubCompany::create($request->all());
+
+        return ['data' => $subCompany, 'code' => 20000];
     }
 
     /**
@@ -74,7 +76,10 @@ class CompanySubCompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $subCompany = CompanySubCompany::findOrFail($id);
+        $subCompany->update($request->all());
+
+        return ['data' => $subCompany, 'code' => 20000];
     }
 
     /**
@@ -85,6 +90,9 @@ class CompanySubCompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $subCompany = CompanySubCompany::findOrFail($id);
+        $subCompany->delete();
+
+        return ['data' => $subCompany, 'code' => 20000];
     }
 }

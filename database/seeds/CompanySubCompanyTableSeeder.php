@@ -16,10 +16,10 @@ class CompanySubCompanyTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create('zh_TW');
 
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             CompanySubCompany::create([
-                'company_id' => rand(1, 5),
-                'sub_companpy_name' => $faker->unique()->company
+                'company_id' => rand(1, 2),
+                'sub_company_name' => $faker->unique()->company
             ]);
         }
     }

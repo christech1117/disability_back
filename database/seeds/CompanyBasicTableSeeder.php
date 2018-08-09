@@ -19,11 +19,11 @@ class CompanyBasicTableSeeder extends Seeder
         $service_area = ['city', 'suburb', 'complex'];
         $service_people = ['obstacles', 'old', 'spirit', 'Special'];
 
-        // And now, let's create a few articles in our database:
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 2; $i++) {
             CompanyBasic::create([
                 'company_name' => $faker->unique()->company,
                 'user_id' => $i + 1,
+                'tel' => $faker->phoneNumber,
                 'email' => $faker->email,
                 'service_area' => $service_area[array_rand($service_area)],
                 'service_people' => $service_people[array_rand($service_people)],

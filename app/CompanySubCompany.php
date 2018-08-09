@@ -10,7 +10,8 @@ class CompanySubCompany extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'sub_companpy_name'
+        'company_id',
+        'sub_company_name'
     ];
 
     protected $dates = ['deleted_at'];

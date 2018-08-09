@@ -16,11 +16,11 @@ class CompanyPlanTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create('zh_TW');
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             CompanyPlan::create([
                 'company_id' => rand(1, 5),
                 'user_id' => $i + 1,
-                'plan_name' => $faker->unique()->jobTitle,
+                'plan_name' => $faker->unique()->companyPrefix,
                 'area_name' => $faker->city,
                 'service_start_date' => $faker->date,
                 'service_end_date' => $faker->date,

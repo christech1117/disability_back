@@ -16,7 +16,7 @@ class CreateCompanySubCompaniesTable extends Migration
         Schema::create('company_sub_companies', function (Blueprint $table) {
             $table->increments('id')->comment('子公司編號');
             $table->integer('company_id')->nullable()->comment('公司編號');
-            $table->string('sub_companpy_name')->comment('子公司名稱');
+            $table->string('sub_company_name')->comment('子公司名稱');
             $table->softDeletes();
             $table->timestamps();
         });
