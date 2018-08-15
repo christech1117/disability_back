@@ -16,7 +16,7 @@ class CompanyPlanTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create('zh_TW');
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             CompanyPlan::create([
                 'company_id' => rand(1, 5),
                 'user_id' => $i + 1,

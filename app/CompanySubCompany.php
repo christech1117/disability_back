@@ -11,7 +11,8 @@ class CompanySubCompany extends Model
 
     protected $fillable = [
         'company_id',
-        'sub_company_name'
+        'sub_company_name',
+        'sub_company_description'
     ];
 
     protected $dates = ['deleted_at'];

@@ -23,7 +23,7 @@ class PersonServiceUserResource extends JsonResource
                 'company_id' => $data['company_id'],
                 'name' => $data['name'],
                 'birthday' => $data['birthday'],
-                'sex' => $data['sex'],
+                'sex' => (string)$data['sex'],
                 'identity' => $data['identity'],
                 'publish_date' => $data['publish_date'],
                 'identify_date' => $data['identify_date'],

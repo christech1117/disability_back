@@ -20,7 +20,7 @@ class UserResource extends JsonResource
         foreach ($datas as $data) {
             $data = [
                 'user_id' => $data['id'],
-                'value' => $data['username'],
+                'username' => $data['username'],
                 'avatar' => $data['avatar'],
                 'work_start_date' => $data['work_start_date'],
                 'phone' => $data['phone'],

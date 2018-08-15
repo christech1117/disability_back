@@ -17,13 +17,15 @@ class PersonServiceUserController extends Controller
     }
     public function show($id)
     {
-        $service_user = PersonServiceUser::where('company_id', $id)->get();
+        $service_user = PersonServiceUser::where('company_id', $id)
+        ->orderBy('person_service_users.id', 'desc')
+        ->get();
 
         return new PersonServiceUserResource($service_user);
     }
 
     public function store(Request $request)
-    {
+    {   
         $service_user = PersonServiceUser::create($request->all());
 
         return ['data' => $service_user, 'code' => 20000];

@@ -51,6 +51,7 @@ class CompanySubCompanyController extends Controller
         $subCompany = CompanySubCompany::select('company_sub_companies.*')
         ->leftjoin('company_basics', 'company_basics.company_id', 'company_sub_companies.company_id')
         ->where('company_sub_companies.company_id', $id)
+        ->orderBy('company_sub_companies.id', 'desc')
         ->get();
 
         return ['data' => $subCompany, 'code' => 20000];

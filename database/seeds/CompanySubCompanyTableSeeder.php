@@ -19,7 +19,8 @@ class CompanySubCompanyTableSeeder extends Seeder
         for ($i = 0; $i < 5; $i++) {
             CompanySubCompany::create([
                 'company_id' => rand(1, 2),
-                'sub_company_name' => $faker->unique()->company
+                'sub_company_name' => $faker->unique()->company,
+                'sub_company_description' => $faker->word
             ]);
         }
     }

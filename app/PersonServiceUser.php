@@ -9,5 +9,17 @@ class PersonServiceUser extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'company_id',
+        'name',
+        'avatar',
+        'birthday',
+        'sex',
+        'identity',
+        'identify_date',
+        'publish_date',
+    ];
+
+
     protected $dates = ['deleted_at'];
 }

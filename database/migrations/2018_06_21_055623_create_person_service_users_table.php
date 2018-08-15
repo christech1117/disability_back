@@ -18,7 +18,7 @@ class CreatePersonServiceUsersTable extends Migration
             $table->integer('company_id')->comment('所屬公司編號');
             $table->string('name')->comment('姓名');
             $table->string('birthday')->comment('出生日期');
-            $table->enum('sex',['male', 'female'])->comment('性別');
+            $table->boolean('sex')->default(true)->comment('性別');
             $table->string('identity')->unique()->comment('身分證字號');
             $table->date('publish_date')->nullable()->comment('手冊核發日期');
             $table->date('identify_date')->nullable()->comment('後續鑑定日期');

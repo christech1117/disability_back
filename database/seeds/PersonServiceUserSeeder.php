@@ -15,7 +15,6 @@ class PersonServiceUserSeeder extends Seeder
         PersonServiceUser::truncate();
 
         $faker = \Faker\Factory::create('zh_TW');
-        $sex = ['male', 'female'];
         $marriage = ['unmarried','married','other'];
         $blood = ['A', 'B', 'AB', 'O'];
         $obstacle_level = ['low', 'medium', 'severe', 'vary_severe'];
@@ -25,7 +24,7 @@ class PersonServiceUserSeeder extends Seeder
                 'company_id' => rand(1, 5),
                 'name' => $faker->name,
                 'birthday' => '2018-06-06',
-                'sex' => $sex[array_rand($sex)],
+                'sex' => rand(true, false),
                 'identity' => $faker->unique()->personalIdentityNumber,
                 'publish_date' => $faker->date,
                 'identify_date' => $faker->date,

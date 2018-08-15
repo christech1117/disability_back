@@ -17,6 +17,7 @@ class UserController extends Controller
         ->leftjoin('company_departments', 'company_departments.depart_id', 'users.depart_id')
         // ->leftjoin('teams_basics', 'teams_basics.team_id', 'users.team_id')
         ->where('users.company_id', 1)
+        ->orderBy('users.user_id', 'desc')
         ->get();
 
         return new UserResource($user);

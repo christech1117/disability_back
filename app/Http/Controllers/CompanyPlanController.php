@@ -17,6 +17,7 @@ class CompanyPlanController extends Controller
         $plan = CompanyPlan::select('company_plans.*', 'users.username', 'users.email', 'users.phone')
         ->leftjoin('users', 'users.id', 'company_plans.user_id')
         ->where('company_plans.company_id', $id)
+        ->orderBy('company_plans.plan_id', 'desc')
         ->get();
 
         return new CompanyPlanResource($plan);
