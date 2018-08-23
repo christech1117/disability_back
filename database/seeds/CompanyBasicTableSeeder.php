@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\CompanyBasic;
+use Illuminate\Database\Seeder;
 
 class CompanyBasicTableSeeder extends Seeder
 {
@@ -19,7 +19,7 @@ class CompanyBasicTableSeeder extends Seeder
         $service_area = ['city', 'suburb', 'complex'];
         $service_people = ['obstacles', 'old', 'spirit', 'Special'];
 
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             CompanyBasic::create([
                 'company_name' => $faker->unique()->company,
                 'user_id' => $i + 1,
@@ -27,7 +27,7 @@ class CompanyBasicTableSeeder extends Seeder
                 'email' => $faker->email,
                 'service_area' => $service_area[array_rand($service_area)],
                 'service_people' => $service_people[array_rand($service_people)],
-                'budget' => $faker->randomNumber
+                'budget' => $faker->randomNumber,
             ]);
         }
     }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PersonServiceUserResource;
 use App\PersonServiceUser;
 use Illuminate\Http\Request;
-use App\Http\Resources\PersonServiceUserResource;
 
 class PersonBasicController extends Controller
 {
@@ -47,9 +47,9 @@ class PersonBasicController extends Controller
      */
     public function show($id)
     {
-         $service_user = PersonServiceUser::where('person_service_users.id', $id)
-        ->leftjoin('person_family_statuses', 'person_family_statuses.serviceuser_id', 'person_service_users.id')
-        ->get();
+        $service_user = PersonServiceUser::where('person_service_users.id', $id)
+            ->leftjoin('person_family_statuses', 'person_family_statuses.serviceuser_id', 'person_service_users.id')
+            ->get();
 
         return new PersonServiceUserResource($service_user);
         // 這邊要join所有資料

@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers;
 
-
-
-
 // use Illuminate\Support\Facades\Input;
 
-use App\User;
-use App\Role;
-use App\Http\Requests;
-use Illuminate\Http\Request;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Http\Resources\AuthResource;
+use App\Role;
+use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -51,14 +46,11 @@ class AuthController extends Controller
 
         $credentials = $request->only('username', 'password');
 
-        if ( $token = JWTAuth::attempt($credentials) ) {
+        if ($token = JWTAuth::attempt($credentials)) {
             return response(['data' => ['token' => $token], 'code' => 20000]);
         } else {
             return response(['message' => '帳號或密碼錯誤']);
         }
-
-
-        
 
         // // 驗證參數，如果驗證失敗，則會拋出 ValidationException 的錯誤
         // $params = $this->validate($request, $rules);

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\PersonFamilyStatus;
+use App\CompanyDepartJob;
 use Illuminate\Http\Request;
 
-class PersonFamilyStatusController extends Controller
+class CompanyDepartJobController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class PersonFamilyStatusController extends Controller
      */
     public function index()
     {
-        $data = PersonFamilyStatus::all();
-
-        return ['data' => $data, 'code' => 20000];
+        //
     }
 
     /**
@@ -37,31 +35,27 @@ class PersonFamilyStatusController extends Controller
      */
     public function store(Request $request)
     {
-        $data = PersonFamilyStatus::create($request->all());
-
-        return ['data' => $data, 'code' => 20000];
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\CompanyDepartJob  $companyDepartJob
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(CompanyDepartJob $companyDepartJob)
     {
-        $data = PersonFamilyStatus::where('serviceuser_id', $id)->get();
-
-        return new PersonFamilyStatusResource($data);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\CompanyDepartJob  $companyDepartJob
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(CompanyDepartJob $companyDepartJob)
     {
         //
     }
@@ -70,28 +64,22 @@ class PersonFamilyStatusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\CompanyDepartJob  $companyDepartJob
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, CompanyDepartJob $companyDepartJob)
     {
-        $data = PersonFamilyStatus::findOrFail($id);
-        $data->update($request->all());
-
-        return ['data' => $data, 'code' => 20000];
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\CompanyDepartJob  $companyDepartJob
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(CompanyDepartJob $companyDepartJob)
     {
-        $data = PersonFamilyStatus::findOrFail($id);
-        $data->delete();
-
-        return ['data' => $data, 'code' => 20000];
+        //
     }
 }

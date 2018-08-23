@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\User;
+use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
 {
@@ -32,40 +32,40 @@ class UsersTableSeeder extends Seeder
             'oees',
             'sis',
             'pos',
-            'family'
+            'family',
+        ];
+        $username = [
+            '系統管理員',
+            '組織管理員',
+            '組織主管',
+            '部門主管',
+            '組\科\室主管',
+            'ISP 促進者',
+            '執行監督者',
+            '支持者',
+            'OEES 訪員',
+            'SIS 訪員',
+            'POS 訪員',
+            '服務對象\家屬',
         ];
         // $username = [
-            // '系統管理員',
-            // '組織管理員',
-            // '組織主管',
-            // '部門主管',
-            // '組\科\室主管',
-            // 'ISP 促進者',
-            // '執行監督者',
-            // '支持者',
-            // 'OEES 訪員',
-            // 'SIS 訪員',
-            // 'POS 訪員',
-            // '服務對象\家屬'
+        //     'super_admin',
+        //     'admin',
+        //     'company_leader',
+        //     'department_leader',
+        //     'group_leader',
+        //     'isp',
+        //     'supervisor',
+        //     'supporter',
+        //     'oees',
+        //     'sis',
+        //     'pos',
+        //     'family'
         // ];
-        $username = [
-            'super_admin',
-            'admin',
-            'company_leader',
-            'department_leader',
-            'group_leader',
-            'isp',
-            'supervisor',
-            'supporter',
-            'oees',
-            'sis',
-            'pos',
-            'family'
-        ];
 
         for ($i = 0; $i < 12; $i++) {
             User::create([
-                'company_id' => rand(1, 5),
+                'company_id' => '2',
                 'username' => $username[$i],
                 'email' => $role[$i] . '@test.com',
                 'password' => Hash::make($role[$i]),
@@ -81,7 +81,7 @@ class UsersTableSeeder extends Seeder
                 'approve_status' => 'sis',
                 'income' => $income[array_rand($income)],
                 'active' => rand(true, false),
-                'token' => 'admin'
+                'token' => 'admin',
             ]);
         }
     }

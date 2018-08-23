@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\CompanyPlan;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use App\Http\Resources\CompanyPlanResource;
+use App\User;
+use Illuminate\Http\Request;
 
 class CompanyPlanController extends Controller
 {
@@ -15,10 +14,10 @@ class CompanyPlanController extends Controller
         $service_count = User::count(); // 服務人數
 
         $plan = CompanyPlan::select('company_plans.*', 'users.username', 'users.email', 'users.phone')
-        ->leftjoin('users', 'users.id', 'company_plans.user_id')
-        ->where('company_plans.company_id', $id)
-        ->orderBy('company_plans.plan_id', 'desc')
-        ->get();
+            ->leftjoin('users', 'users.id', 'company_plans.user_id')
+            ->where('company_plans.company_id', $id)
+            ->orderBy('company_plans.plan_id', 'desc')
+            ->get();
 
         return new CompanyPlanResource($plan);
     }

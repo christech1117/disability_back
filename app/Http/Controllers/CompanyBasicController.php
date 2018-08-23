@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\PersonServiceUser;
 use App\CompanyBasic;
-use Illuminate\Http\Request;
 use App\Http\Resources\CompanyBasicResource;
+use App\PersonServiceUser;
+use App\User;
+use Illuminate\Http\Request;
 
 class CompanyBasicController extends Controller
 {
@@ -14,7 +14,7 @@ class CompanyBasicController extends Controller
     {
         $companyBasic = CompanyBasic::all();
 
-        return ['data' => $companyBasic, 'code' => 20000]; 
+        return ['data' => $companyBasic, 'code' => 20000];
     }
 
     public function show($id)
@@ -23,9 +23,9 @@ class CompanyBasicController extends Controller
         $user_count = User::count(); // 全職人員數量
 
         $companyBasic = CompanyBasic::select('company_basics.*', 'users.username', 'users.id as user_id')
-        ->leftjoin('users', 'users.id', 'company_basics.user_id')
-        ->where('company_basics.company_id', $id)
-        ->firstOrFail();
+            ->leftjoin('users', 'users.id', 'company_basics.user_id')
+            ->where('company_basics.company_id', $id)
+            ->firstOrFail();
 
         $companyBasic->setAttribute('service_count', $service_count);
         $companyBasic->setAttribute('user_count', $user_count);

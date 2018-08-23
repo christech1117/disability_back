@@ -12,15 +12,32 @@ class CompanyDepartment extends Model
     protected $primaryKey = 'depart_id';
 
     protected $fillable = [
+        # 日間服務
+        'company_id',
         'sub_company_id',
+        'depart_type',
         'service_type',
         'depart_name',
         'plan_id',
         'user_id',
         'address',
-        'tel',
-        'live_id',
-        'job_id'
+        'phone',
+        # 居住服務
+        'house_type',
+        'have_elevator',
+        'house_nature',
+        'rent',
+        'floor',
+        'floor_area',
+        'parlor_count',
+        'bathroom_count',
+        'room_count',
+        'bed_count',
+        # 就業服務
+        'work_start_time',
+        'work_end_time',
+        'salary',
+        'content',
     ];
 
     protected $dates = ['deleted_at'];

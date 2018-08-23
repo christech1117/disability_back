@@ -14,6 +14,7 @@ class CompanyPlan extends Model
     protected $fillable = [
         'plan_name',
         'area_name',
+        'area_description',
         'user_id',
         'tel',
         'email',
@@ -21,7 +22,7 @@ class CompanyPlan extends Model
         'service_end_date',
         'price',
         'description',
-        'company_id'
+        'company_id',
     ];
 
     protected $dates = ['deleted_at'];

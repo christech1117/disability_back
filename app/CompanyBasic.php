@@ -14,16 +14,14 @@ class CompanyBasic extends Model
     protected $fillable = [
         'company_name',
         'user_id',
-        'tel',
+        'phone',
         'email',
         'service_area',
         'service_people',
         'service_other',
         'budget',
         'live',
-        'daytime',
-        'job',
-        'education',
+        'service_content',
         'other',
     ];
 

@@ -16,20 +16,20 @@ class PersonServiceUserResource extends JsonResource
     {
         $datas = parent::toArray($request);
         $new_datas = [];
-        
+
         foreach ($datas as $data) {
             $data = [
                 'id' => $data['id'],
                 'company_id' => $data['company_id'],
                 'name' => $data['name'],
                 'birthday' => $data['birthday'],
-                'sex' => (string)$data['sex'],
+                'sex' => (string) $data['sex'],
                 'identity' => $data['identity'],
                 'publish_date' => $data['publish_date'],
                 'identify_date' => $data['identify_date'],
                 'avatar' => $data['avatar'],
                 'obstacle_level' => $data['obstacle_level'],
-                'marriage' => (string)$data['marriage'],
+                'marriage' => (string) $data['marriage'],
                 'marriage_memo' => $data['marriage_memo'],
                 'house_address' => $data['house_address'],
                 'contact_address' => $data['contact_address'],
@@ -38,7 +38,7 @@ class PersonServiceUserResource extends JsonResource
                 'blood' => $data['blood'],
                 'care_people' => $data['care_people'],
                 'decided_people' => $data['decided_people'],
-                'education' => $data['education']
+                'education' => $data['education'],
             ];
             $new_datas[] = $data;
         }

@@ -24,6 +24,7 @@ class CompanyPlanResource extends JsonResource
                 'user_id' => $data['user_id'],
                 'plan_name' => $data['plan_name'],
                 'area_name' => $data['area_name'],
+                'area_description' => $data['area_description'],
                 'service_start_date' => $data['service_start_date'],
                 'service_end_date' => $data['service_end_date'],
                 'price' => $data['price'],

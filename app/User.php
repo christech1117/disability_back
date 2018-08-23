@@ -2,15 +2,15 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable, SoftDeletes;
-    
+
     // Rest omitted for brevity
 
     /**
@@ -52,10 +52,11 @@ class User extends Authenticatable implements JWTSubject
         'team_id',
         'role_id',
         'approve_status',
+        'role_name',
         'income',
         'active',
         'company_id',
-        'token'
+        'token',
     ];
 
     /**
@@ -63,9 +64,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $hidden = ['remember_token'];
 
     protected $dates = ['deleted_at'];
 }
